@@ -1,0 +1,54 @@
+/* Conteneur de la carte */
+#map {
+    width: 110rem;          /* Largeur de la carte */
+    height: 40rem;         /* Hauteur de la carte */
+    margin-left: 0;     /* Décalage depuis la gauche */
+    z-index: 0;
+}
+
+/* Conteneur principal */
+.map-container {
+    display: flex;
+    justify-content: flex-start; /* Aligner la carte à gauche */
+    margin-top: 6.5rem;
+    height: 100vh;               /* Occuper toute la hauteur de la page */
+}
+
+.mainTitleContactContainer {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    z-index: 2;
+    top: 11rem;
+    left: 10rem;
+    gap: 34.2rem;
+}
+
+/* iPhone XR, 11 */
+@media (max-width: 414px) {
+    /* Conteneur de la carte */
+    #map {
+        width: 110vw;          /* Largeur de la carte */
+        height: 60vh;         /* Hauteur de la carte */
+        margin-left: 0;     /* Décalage depuis la gauche */
+        z-index: 0;
+    }
+
+    /* Conteneur principal */
+    .map-container {
+        display: flex;
+        justify-content: flex-start; /* Aligner la carte à gauche */
+        margin-top: 6.5rem;
+        height: 100vh;               /* Occuper toute la hauteur de la page */
+    }
+
+    .mainTitleContactContainer {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        z-index: 2;
+        top: 9.7rem;
+        left: 3rem;
+        gap: 30.9rem;
+    }
+}

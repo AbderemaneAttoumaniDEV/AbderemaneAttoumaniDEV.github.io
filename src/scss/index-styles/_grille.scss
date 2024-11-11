@@ -1,0 +1,72 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 colonnes */
+    grid-gap: 4rem; /* Espace entre les images */
+    margin-top: 5rem;
+    padding: 2rem; /* Ajoute un peu de remplissage autour de la grille */
+    place-items: center;
+}
+
+.grid-item {
+    position: relative; /* Nécessaire pour positionner l'overlay par rapport à l'image */
+
+}
+
+.grid-item img {
+    width: 100%; /* Rendre l'image responsive */
+    height: auto; /* Maintenir l'aspect ratio */
+
+}
+
+.grid-item:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.overlay {
+    position: absolute; /* Positionner l'overlay par rapport à l'élément parent */
+    top: 0.5rem; /* 0.5 rem du haut */
+    left: 0.5rem; /* 0.5 rem de la gauche */
+    color: white; /* Couleur du texte */
+    background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+    padding: 0.5rem; /* Padding autour du texte */
+    border-radius: 4px; /* Coins arrondis */
+}
+
+/* iPhone XR, 11 */
+@media (max-width: 414px) {
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr); /* 2 colonnes */
+        grid-gap: 4rem; /* Espace entre les images */
+        margin-top: 2rem;
+        padding: 2rem; /* Ajoute un peu de remplissage autour de la grille */
+        place-items: center;
+    }
+    
+    .grid-item {
+        position: relative; /* Nécessaire pour positionner l'overlay par rapport à l'image */
+    
+    }
+    
+    .grid-item img {
+        width: 100%; /* Rendre l'image responsive */
+        height: auto; /* Maintenir l'aspect ratio */
+    
+    }
+    
+    .grid-item:hover{
+        cursor: pointer;
+        transform: scale(1.05);
+    }
+    
+    .overlay {
+        position: absolute; /* Positionner l'overlay par rapport à l'élément parent */
+        top: 0.5rem; /* 0.5 rem du haut */
+        left: 0.5rem; /* 0.5 rem de la gauche */
+        color: white; /* Couleur du texte */
+        background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+        padding: 0.5rem; /* Padding autour du texte */
+        border-radius: 4px; /* Coins arrondis */
+    }   
+}

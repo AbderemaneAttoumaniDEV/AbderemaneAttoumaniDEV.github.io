@@ -1,0 +1,9 @@
+.separator {
+    border: none; 
+    height: 0.1rem;  /* Définit la hauteur de la ligne */
+    background-color: #ccc; /* Couleur de la ligne */
+    margin: 6.5rem 0; /* Espacement vertical autour de la ligne */
+    width: 70%; /* Largeur de la ligne (optionnel) */
+    margin-left: auto; /* Centrer horizontalement */
+    margin-right: auto;
+}
