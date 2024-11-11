@@ -1,0 +1,211 @@
+.hamburger {
+  position: fixed;
+  cursor: pointer;
+  right: 3rem;
+}
+
+.hamburger:hover {
+  transform: scale(1.05) ;
+}
+
+.hamburger svg {
+  height: 3em;
+  transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.line {
+  fill: none;
+  stroke: white;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 3;
+  transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+              stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.line-top-bottom {
+  stroke-dasharray: 12 63;
+}
+
+/* Modifier l'animation de l'icône en mode actif */
+.hamburger.active svg {
+  transform: rotate(-45deg);
+}
+
+.hamburger.active .line-top-bottom {
+  stroke-dasharray: 20 300;
+  stroke-dashoffset: -32.42;
+}
+
+/* Styles de l'Overlay */
+.overlay {
+  position: fixed;
+  z-index: 0; /* Mettre à la couche 0 */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #10141e; 
+  opacity: 0;
+  transform: translateY(100%);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+/* Afficher l'overlay en mode actif */
+.overlay.active {
+  z-index: 11; /* Mettre à la couche 11 */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #10141e;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Contenu de l'overlay */
+.overlay-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.overlay-content a {
+  color: #ffffff;
+  font-size: 2rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.overlay-content a:hover {
+  color: #00bfff; /* Bleu clair au survol */
+}
+
+.all-overlay-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bottomTitleOverlay{
+  position: fixed;
+  bottom: 2rem;
+}
+
+/* iPhone XR, 11 */
+@media (max-width: 414px) {
+  .hamburger {
+    position: fixed;
+    cursor: pointer;
+    left: 22rem;
+    top: 1.8rem;
+  }
+  
+  .hamburger:hover {
+    transform: scale(1.05) ;
+  }
+  
+  .hamburger svg {
+    height: 2.5em;
+    transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .line {
+    fill: none;
+    stroke: white;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 3;
+    transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+                stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .line-top-bottom {
+    stroke-dasharray: 12 63;
+  }
+  
+  /* Modifier l'animation de l'icône en mode actif */
+  .hamburger.active svg {
+    transform: rotate(-45deg);
+  }
+  
+  .hamburger.active .line-top-bottom {
+    stroke-dasharray: 20 300;
+    stroke-dashoffset: -32.42;
+  }
+  
+  /* Styles de l'Overlay */
+  .overlay {
+    position: fixed;
+    z-index: 0; /* Mettre à la couche 0 */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #10141e; 
+    opacity: 0;
+    transform: translateY(100%);
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+  }
+  
+  .no-scroll {
+    overflow: hidden;
+  }
+  
+  /* Afficher l'overlay en mode actif */
+  .overlay.active {
+    z-index: 11; /* Mettre à la couche 11 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #10141e;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Contenu de l'overlay */
+  .overlay-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .overlay-content a {
+    color: #ffffff;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .overlay-content a:hover {
+    color: #00bfff; /* Bleu clair au survol */
+  }
+  
+  .all-overlay-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .bottomTitleOverlay{
+    position: fixed;
+    bottom: 1rem;
+  }
+}

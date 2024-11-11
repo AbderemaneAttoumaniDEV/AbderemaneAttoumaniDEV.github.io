@@ -1,0 +1,11 @@
+/* Animation de chargement */
+.overlay-fade-in {
+    opacity: 0;
+    transition: opacity 0.5s ease-in;
+  }
+  
+  .overlay-fade-out {
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+  }
+  
