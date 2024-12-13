@@ -4,294 +4,190 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio | Abdérémane Attoumani - Web & UI Designer</title>
-    <link rel="stylesheet" href="./src/css/styles.css">
+    <link rel="stylesheet" href="./src/css/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-  <body>
+<body class="bg-zinc-900 text-white flex flex-col min-h-screen">
 
-    <!-- -----------------------------------HEADER------------------------------------- -->
+    <!-- Bouton de retour en haut -->
+    <button id="back-to-top" class="fixed hidden bottom-5 right-5 bg-blue-800 text-white p-3 rounded-full shadow-lg hover:bg-zinc-700 focus:outline-none z-[9999]">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"></path>
+        </svg>
+    </button>
 
-    <header class="header">
-      <!-- Mini carte de présentation en haut à gauche -->
-      <div class="headercard">
-          <div class="headerimg">
-            <img src="./src/assets/images/WhiteA.png" alt="">
-          </div>
-          <div class="headertextBox">
-              <div class="headertextContent">
-              <p class="headerh1">Abdérémane Attoumani</p>
-              </div>
-              <p class="headerp">Web & UI Designer</p>
-          </div>
-        </div>
-      
-      <div class="social-icon-container">
-          <!-- Bouton Linkedin -->
-            <ul class="social-icon">
-              <li class="icon-content">
-                <a
-                  data-social="linkedin"
-                  aria-label="LinkedIn"
-                  href="https://www.linkedin.com/in/abd%C3%A9r%C3%A9mane-attoumani-4770ba301/"
-                  target="_blank"
-                  >
-                  <div class="iconfilled"></div>
-                  <svg
-                    xml:space="preserve"
-                    viewBox="0 0 16 16"
-                    class="bi bi-linkedin"
-                    fill="currentColor"
-                    height="16"
-                    width="16"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fill="currentColor"
-                      d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"
-                    ></path>
-                  </svg>
-                </a>
-                <div class="icontooltip">LinkedIn</div>
-              </li>
+    <!-- Barre de progression -->
+    <div class="fixed top-0 left-0 h-1 bg-blue-800 z-[10001]" id="progress-bar"></div>
 
-          <!-- Bouton GitHub -->
-              <li class="icon-content">
-                <a data-social="github" aria-label="GitHub"   href="https://github.com/AbderemaneAttoumaniDEV" target="_blank">
-                  <div class="iconfilled"></div>
-                  <svg
-                    xml:space="preserve"
-                    viewBox="0 0 16 16"
-                    class="bi bi-github"
-                    fill="currentColor"
-                    height="16"
-                    width="16"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fill="currentColor"
-                      d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"
-                    ></path>
-                  </svg>
-                </a>
-                <div class="icontooltip">GitHub</div>
-              </li>
-              <!-- Bouton Mail -->
-              <li class="icon-content">
-                <a data-social="mail" aria-label="Mail"   href="mailto:attoumani.abderemane@gmail.com">
-                  <div class="iconfilled"></div>
-                  <svg
-                    xml:space="preserve"
-                    viewBox="0 0 24 24"
-                    class="bi bi-mail"
-                    fill="currentColor"
-                    height="24"
-                    width="24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fill="currentColor"
-                      d="M20.79 11.34l-3.34-6.68A3 3 0 0 0 14.76 3H9.24a3 3 0 0 0-2.69 1.66l-3.34 6.68a2 2 0 0 0-.21.9V18a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3v-5.76a2 2 0 0 0-.21-.9zM8.34 5.55a1 1 0 0 1 .9-.55h5.52a1 1 0 0 1 .9.55L18.38 11H16a1 1 0 0 0-1 1v2a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-2a1 1 0 0 0-1-1H5.62z"
-                    ></path>
-                  </svg>
-                </a>
-                <div class="icontooltip">Mail</div>
-              </li>
-            </ul>
-          </div>
+    <!-- HEADER --> 
+    <header class="bg-zinc-900 shadow-md sticky top-0 z-[10000]">
+        <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3 md:px-6 lg:px-8">
+            <div class="flex items-center space-x-3" id="header-text">
+                <img src="./src/assets/images/WhiteACircle.png" alt="Logo" class="w-12 h-12">
+                <div>
+                    <p class="font-semibold text-lg">Abdérémane Attoumani</p>
+                    <p class="text-sm text-gray-300">Web & UI Designer</p>
+                </div>
+            </div>
 
-        <!-- Menu hamburger -->
+            <!-- Menu hamburger --> 
+            <div class="relative">
+                <button id="menu-btn" class="focus:outline-none">
+                    <!-- Icône Hamburger -->
+                    <svg id="hamburger-icon" class="w-8 h-8 text-gray-300 hover:text-gray-600 transform hover:scale-[1.2] transition-all duration-300" fill="none" stroke="currentColor" stroke-width="2"
+                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
 
-          <div class="navbar-menu">
-            <div class="hamburger" id="hamburger-icon">
-                <svg viewBox="0 0 32 32">
-                    <path class="line line-top-bottom" d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"></path>
-                    <path class="line" d="M7 16 27 16"></path>
+                <!-- Icône Croix (Close) -->
+                <svg id="close-icon" class="hidden w-8 h-8 text-gray-300 hover:text-gray-600 transform hover:scale-[1.2] transition-all duration-300 absolute top-0 right-0 cursor-pointer z-30" fill="none" stroke="currentColor" stroke-width="2"
+                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
             </div>
-          </div>
 
-      <!-- Menu détaillé qui s'affiche après un clique sur le menu hamburger -->
-      <div class="overlay" id="overlay">
-        <div class="all-overlay-content">
-          <div class="overlay-content">
-
-            <p class="overlayMenu">Menu</p>
-            <a class="aproposMenu" href="./index.html">Accueil</a>
-            <a class="projetMenu" href="#projects">Projets</a>
-            <a class="aproposMenu" href="./about.html">À propos de moi</a>
-            <a class="contactMenu" href="./contact.html">Contact</a>
-            <a class="linkedinMenu" href="https://www.linkedin.com/in/abd%C3%A9r%C3%A9mane-attoumani/" target="_blank">LinkedIn</a>
-
-          </div>
-          <p class="bottomTitleOverlay">©️ 2024 Abdérémane Attoumani</p>
+            <!-- Menu -->
+            <nav id="menu" class="hidden fixed inset-0 bg-zinc-900 text-white flex flex-col items-center justify-center space-y-8">
+                <h2 class="text-xl font-bold">Menu</h2>
+                <a href="./index.html" class="animated-link text-3xl text-gray-300 transform hover:scale-[1.1] transition-all duration-300">Accueil</a>
+                <a href="./index.html#projects" class="animated-link text-3xl text-gray-300 transform hover:scale-[1.1] transition-all duration-300">Projets</a>
+                <a href="./about.html" class="animated-link text-3xl text-gray-300 transform hover:scale-[1.1] transition-all duration-300">À propos</a>
+                <a href="./contact.html" class="animated-link text-3xl text-gray-300 transform hover:scale-[1.1] transition-all duration-300">Contact</a>
+                <a href="https://www.linkedin.com/in/abd%C3%A9r%C3%A9mane-attoumani" class="animated-link text-3xl text-gray-300 transform hover:scale-[1.1] transition-all duration-300">Linkedin</a>
+                <a href="https://github.com/AbderemaneAttoumaniDEV" class="animated-link text-3xl text-gray-300 transform hover:scale-[1.1] transition-all duration-300">Github</a>
+                <div class="mt-10 absolute bottom-10 text-center text-zinc-600">
+                    <p>© 2024 Abdérémane Attoumani. Tous droits réservés.</p>
+                </div>
+            </nav>
         </div>
-      </div>
-      
-  </header>
+    </header>
 
-  <!-- -----------------------------------MAIN------------------------------------- -->
+    <!-- MAIN -->
+    <main class="max-w-7xl mx-auto px-4 py-8 space-y-12 flex-grow">
 
-  <main>
-    <!-- Texte en fond -->
-    <h1 class="h1hidden">WEB & UI DESIGNER</h1> 
-        
-    <!-- Présentation -->
-    <div class="presBody">
-        <h2 class="subTitleName">Abdérémane Attoumani</h2>
-        <h2 class="mainTitle">Concepteur de Sites Web et d'Interfaces Utilisateur</h2>
-        <h2 class="subTitle">Étudiant en développement web, j'ai travaillé sur divers projets académiques et en freelance, ce qui m’a permis de renforcer mes compétences en création de sites et applications web. Grâce à ces expériences, je suis capable de concevoir des interfaces attractives et intuitives pour aider les projets à se démarquer et à attirer des utilisateurs.</h2>
-        
-        <p class="pBody1"> 
-            <!-- Bouton pour aller sur la section des projets-->
-            <a href="#projects" class="underline-button-footer">Voir les projets</a>         
+        <!-- Présentation -->
+        <section class="text-center space-y-4 scroll-element">
+            <h1 class="uppercase tracking-[0.2rem] text-2xl text-sm md:text-lg">Abdérémane ATTOUMANI</h1>
+            <h2 class="text-3xl md:text-4xl text-gray-300">Concepteur de Sites Web et d'Interfaces Utilisateur</h2>
+            <p class="text-gray-300 max-w-3xl mx-auto">
+                Étudiant en développement web, j'ai travaillé sur divers projets académiques et en freelance,
+                ce qui m’a permis de renforcer mes compétences en création de sites et applications web 
+            </p>
+        </section>
 
-            <span class="ou"> ou </span> 
+        <!-- Projets -->
+        <section id="projects" class="space-y-10 scroll-element">
+          <h2 class="text-white font-bold text-3xl lg:text-3xl mx-2 my-4 xl:my-8 flex justify-center">Mes Réalisations</h2>
 
-            <!-- Bouton pour aller sur la page propos de moi -->
-            <a href="./about.html" class="underline-button-footer">En savoir plus sur moi</a>         
-        </p>
-    </div> 
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-x-16 gap-y-10">
+              <!-- To Do List -->
+              <a href="https://abderemaneattoumanidev.github.io/ToDoList-JavaScript/" target="_blank" class="relative group block">
+                <img src="./src/assets/images/project/todolist.png" alt="To Do List" class="w-full h-96 object-cover rounded-lg shadow-md">
+                <div class="absolute inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+                    <p class="text-white font-bold">To Do List (JavaScript)</p>
+                </div>
+            </a>
 
-    <!-- Image de moi -->
-    <div class="imageContainer">
-        <img src="./src/assets/images/pngMoiBW.png" alt="" class="rightImage">
-    </div>
-
-    <!-- -----------------------------------Projets------------------------------------- -->
-
-    <div class="project-container" id="projects">
-      <h2 class="subTitleName">Un aperçu de mes projets les plus captivants en développement web</h2>
-      <h2 class="mainTitle">Mes Réalisations (en travaux..)</h2>
-    </div>
-
-    <div class="grid-container">
-
-        <div class="grid-item" id="project1">
-          <img src="./src/assets/images/ProjetTemplate01.png" alt="Image 1">
-          <div class="date-overlay">2024</div>
-          <div class="text-overlay">Projet 1</div>
-        </div>
-
-        <div class="grid-item" id="project2">
-            <img src="./src/assets/images/ProjetTemplate02.png" alt="Image 2">
-              <div class="date-overlay">2023</div>
-              <div class="text-overlay">Projet 2</div>
-        </div>
-
-        <div class="grid-item" id="project3">
-            <img src="./src/assets/images/ProjetTemplate03.png" alt="Image 3">
-            <div class="date-overlay">2022</div>
-            <div class="text-overlay">Projet 3</div>
-        </div>
-
-        <div class="grid-item" id="project4">
-            <img src="./src/assets/images/ProjetTemplate04.png" alt="Image 4">
-            <div class="date-overlay">2022</div>
-            <div class="text-overlay">Projet 4</div>
-        </div>
-
-        <div class="grid-item" id="project5">
-            <img src="./src/assets/images/ProjetTemplate05.png" alt="Image 5">
-            <div class="date-overlay">2021</div>
-            <div class="text-overlay">Projet 5</div>
-        </div>
-
-        <div class="grid-item" id="project6">
-            <img src="./src/assets/images/ProjetTemplate06.png" alt="Image 6">
-            <div class="date-overlay">2020</div>
-            <div class="text-overlay">Projet 6</div>
-        </div>
-
-    </div>
-
-    <!-- -------------------------Pré-Footer------------------------------------- -->
-
-    <div class="prefooter-container">
-      <h2 class="subTitleName">Besoin d'un Développeur ?</h2>
-      <!-- Bouton pour aller sur la page propos de moi -->
-      <button class="ctb" onclick="window.location.href='./contact.html'">
-        <span class="hover-underline-animation2">Travaillons ensemble</span>
-        <svg
-            id="arrow-horizontal"
-            xmlns="http://www.w3.org/2000/svg"
-            width="30"
-            height="10"
-            viewBox="0 0 46 16"
-        ></svg>
-      </button>
-    </div>
-  </main>
-
-  <hr class="separator">
-
-  <!-- -------------------------FOOTER------------------------------------- -->
-
-      <footer>
-        <div class="footer-container">
-          <div class="footer-container2">
-
-            <!-- SECTION Informations de contact -->
-            <section class="contact-section">
-              <h2 class="h-footer">Information de Contact</h2>
-              <p class="subTitleName">N'hésitez pas à m'envoyer un message, je réponds généralement rapidement !</p>
-              <div class="contact-info">
-                  <p><strong>Email :</strong> <a href="mailto:attoumani.abderemane@gmail.com">attoumani.abderemane@gmail.com</a></p>
-                  <p><strong>Téléphone :</strong> <a href="tel:+48517512348">+33 7 67 11 89 48</a></p>
-              </div>
-            </section>
-  
-            <!-- SECTION Projet récents -->
-            <section class="last-project-section">
-              <h2 class="h-footer">Projet récents</h2>
-              <!-- Bouton pour aller sur la page du Projet 1 -->
-              <a href="#project1" class="underline-button">Projet 1</a>
-  
-              <!-- Bouton pour aller sur la page du Projet 2 -->
-              <a href="#project2" class="underline-button">Projet 2</a>
+              <!-- Weather App -->
+              <a href="https://abderemaneattoumanidev.github.io/WeatherApp/" target="_blank" class="relative group block">
+                  <img src="./src/assets/images/project/weatherapp.png" alt="Weather App" class="w-full h-96 object-cover rounded-lg shadow-md">
+                  <div class="absolute inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+                      <p class="text-white font-bold">Weather App</p>
+                  </div>
+              </a>
               
-              <!-- Bouton pour aller sur la page du Projet 3 -->
-              <a href="#project3" class="underline-button">Projet 3</a>
-  
-              <!-- Bouton pour aller sur la page du Projet 4 -->
-              <a href="#project4" class="underline-button">Projet 4</a>
-  
-              <!-- Bouton pour aller sur la page du Projet 5 -->
-              <a href="#project5" class="underline-button">Projet 5</a>
-  
-              <!-- Bouton pour aller sur la page du Projet 6 -->
-              <a href="#project6" class="underline-button">Projet 6</a>
-            </section>
-          
-            <!-- SECTION Disponibilité -->
-            <section class="disponibility-section">
-              <h2 class="h-footer">Disponibilié actuel</h2>
-              <p class="subTitleName">
-                En recherche active d'un contrat d'apprentissage à partir du 10 Novembre 2024 pour une durée de 18 mois (5 mois en école/14 mois en entreprise)
-              </p>
-            </section>
-  
-            <!-- SECTION Follow me -->
-             
-  
-                <section class="followme-section">
-                  <h2 class="h-footer">Suivez moi sur</h2>
-                  <!-- Bouton pour aller sur mon Linkedin-->
-                  <a href="https://www.linkedin.com/in/abd%C3%A9r%C3%A9mane-attoumani/" target="_blank" class="underline-button">Linkedin</a>
-      
-                  <!-- Bouton pour aller sur mon Github -->
-                  <a href="https://github.com/AbderemaneAttoumaniDEV" target="_blank" class="underline-button">GitHub</a>
-                </section>
-             </div>
-             <p class="copyright-footer">©️ 2024 Abdérémane Attoumani</p>
-
+              <!-- Générateur de Mot de Passe -->
+              <a href="https://abderemaneattoumanidev.github.io/PasswordGenerator/" target="_blank" class="relative group block">
+                  <img src="./src/assets/images/project/passwordgenerator.png" alt="Générateur de Mot de Passe" class="w-full h-96 object-cover rounded-lg shadow-md">
+                  <div class="absolute inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+                      <p class="text-white font-bold">Générateur de Mot de Passe</p>
+                  </div>
+              </a>
+              
+              <!-- Formulaire d'Authentification Locale -->
+              <a href="https://abderemaneattoumanidev.github.io/Local-Authentication-Form/" target="_blank" class="relative group block">
+                  <img src="./src/assets/images/project/local-authentication-form.png" alt="Formulaire d'Authentification Locale" class="w-full h-96 object-cover rounded-lg shadow-md">
+                  <div class="absolute inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+                      <p class="text-white font-bold">Formulaire d'Authentification Locale</p>
+                  </div>
+              </a>
+              
+              
+          </div>
+          <!-- Lien vers GitHub -->
+          <div class="text-center mt-2">
+            <a href="https://github.com/AbderemaneAttoumaniDEV" target="_blank" class="animated-link text-gray-300 text-2xl text-sm md:text-lg transition duration-300">
+                Vous en voulez plus ? Visitez mon GitHub
+            </a>
         </div>
-        
-      </footer>
+      </section>
+      
 
-      <script type="module" src="./src/javascript/main.js"></script>
-      <script src="./src/javascript/transition.js"></script>
+        <!-- Préfooter -->
+        <section id="contact" class="text-white py-8 scroll-element">
+            <div class="max-w-3xl mx-auto text-center space-y-4">
+                <h2 class="text-2xl font-bold">Besoin d'un développeur ?</h2>
+                <p class="text-sm text-gray-300">Je suis toujours à la recherche de nouveaux projets et collaborations. Contactez-moi dès maintenant !</p>
+                <a href="./contact.html"
+                   class="bg-zinc-800 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-zinc-700 transition inline-block transform hover:scale-[1.05] transition-all duration-300">
+                    Travaillons ensemble
+                </a>
+            </div>
+        </section>
+        <hr class="my-4 h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-90 dark:via-neutral-400" />
+    </main>
 
-  </body>
+    <!-- FOOTER -->
+    <footer class="bg-zinc-900 text-white py-10">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+            <!-- Informations de contact -->
+            <section class="scroll-element">
+                <h3 class="text-lg font-bold mb-4">Informations de Contact</h3>
+                <p class="text-sm text-gray-300">N'hésitez pas à m'envoyer un message, je réponds généralement rapidement !</p>
+                <div class="mt-4 space-y-2">
+                    <p><a href="mailto:attoumani.abderemane@gmail.com" target="_blank" class="animated-link text-sm text-gray-400 ">attoumani.abderemane@gmail.com</a></p>
+                    <p><a href="tel:+33767118948" target="_blank" class="animated-link text-sm text-gray-400 ">+33 7 67 11 89 48</a></p>
+                </div>
+            </section>
 
+            <!-- Projets récents -->
+            <section class="scroll-element">
+                <h3 class="text-lg font-bold mb-4">Projets récents</h3>
+                <ul class="text-sm space-y-4">
+                    <li><a href="https://abderemaneattoumanidev.github.io/ToDoList-JavaScript/" target="_blank" class="animated-link text-gray-400">To Do List</a></li>
+                    <li><a href="https://abderemaneattoumanidev.github.io/WeatherApp/" target="_blank" class="animated-link text-gray-400">Weather App</a></li>
+                    <li><a href="https://abderemaneattoumanidev.github.io/PasswordGenerator/" target="_blank" class="animated-link text-gray-400">Générateur de Mot de Passe</a></li>
+                    <li><a href="https://abderemaneattoumanidev.github.io/Local-Authentication-Form/" target="_blank" class="animated-link text-gray-400">Formulaire d'Authentification Locale</a></li>
+                </ul>
+            </section>
+
+            <!-- Disponibilité -->
+            <section class="scroll-element">
+                <h3 class="text-lg font-bold mb-4">Disponibilité actuelle</h3>
+                <p class="text-sm text-gray-300">
+                    En recherche active d'un contrat d'apprentissage pour une rentrée décalée en début 2025 ou fin 2025
+                </p>
+            </section>
+            <!-- Informations de contact -->
+            <section class="scroll-element">
+                <h3 class="text-lg font-bold mb-4">Suivez moi sur</h3>
+                <div class="mt-4 space-y-2">
+                    <p><a href="https://github.com/AbderemaneAttoumaniDEV" target="_blank" class="animated-link text-sm text-gray-400">GitHub</a></p>
+                    <p><a href="https://www.linkedin.com/in/abd%C3%A9r%C3%A9mane-attoumani/" target="_blank" class="animated-link text-sm text-gray-400">Linkedin</a></p>
+                </div>
+            </section>
+        </div>
+
+        <div class="mt-10 text-center text-zinc-600">
+            <p>© 2024 Abdérémane Attoumani. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="./src/javascript/main.js" type="module"></script>
+    <script src="./src/javascript/hamburger.js"></script>
+    <script src="./src/javascript/scroll.js"></script>
+
+</body>
 </html>
-

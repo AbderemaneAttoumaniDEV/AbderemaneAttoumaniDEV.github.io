@@ -11,11 +11,6 @@ if (mapContainer && !mapContainer.classList.contains('leaflet-container')) {
         attribution: '© OpenStreetMap'
     }).addTo(map);
 
-    // Ajouter un marqueur pour Nantes
-    L.marker([47.2186, -1.5536]).addTo(map)
-        .bindPopup('Nantes')
-        .openPopup();
-
     // Ajouter un marqueur pour Meaux
     L.marker([48.9583, 2.8774]).addTo(map)
         .bindPopup('Meaux')
@@ -24,6 +19,11 @@ if (mapContainer && !mapContainer.classList.contains('leaflet-container')) {
     // Ajouter un marqueur pour Paris
     L.marker([48.8533, 2.3691]).addTo(map)
         .bindPopup('Paris')
+        .openPopup();
+
+    // Ajouter un marqueur pour Nantes
+    L.marker([47.2186, -1.5536]).addTo(map)
+        .bindPopup('Nantes')
         .openPopup();
 
 } else {

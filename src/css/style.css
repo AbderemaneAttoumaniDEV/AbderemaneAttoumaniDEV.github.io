@@ -1,0 +1,127 @@
+/* Fonts */
+@font-face {
+    font-family: 'Archivo Black';
+    src: url('../assets/fonts/ArchivoBlack-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+body {
+    font-family: 'Archivo Black', sans-serif;
+}
+
+
+
+/* Transition et animation Scroll */
+.scroll-element {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s, transform 0.6s;
+}
+
+.scroll-element.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.scroll-element.hidden-up {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+.scroll-element.hidden-down {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.fade-image {
+    opacity: 0; /* Par défaut, les images sont invisibles */
+    transform: scale(0.95); /* Une légère réduction pour un effet d'apparition plus subtil */
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+
+
+/* Transition et animation Scroll pour les Images */
+.fade-image.fade-in {
+    opacity: 1; /* L'image devient visible */
+    transform: scale(1); /* L'image reprend sa taille normale */
+}
+
+.fade-image.fade-out {
+    opacity: 0; /* L'image disparaît */
+    transform: scale(0.95); /* Une légère réduction de taille pour la sortie */
+}
+
+
+
+/* Transition et Animation Menu */
+#menu {
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+
+
+
+
+/* Ajouter une animation simple pour la barre de progression */
+@keyframes progress {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: var(--progress-width); /* La largeur définie dynamiquement */
+    }
+}
+
+.skill-bar {
+    opacity: 0; /* Par défaut, la barre est invisible */
+    transform: translateY(20px); /* Position initiale légèrement décalée */
+    transition: opacity 1s ease, transform 1s ease; /* Transition fluide */
+}
+
+.skill-bar.visible {
+    opacity: 1;
+    transform: translateY(0); /* Se déplace vers sa position normale */
+}
+
+/* Animation de la barre de progression */
+.skill-bar .progress {
+    height: 100%;
+    background-color: #4caf50;
+    width: 0%; /* Commence de 0% */
+    animation: progress 2s ease-out forwards; /* Animation de remplissage */
+}
+
+
+
+
+/* Animation pour les liens cliquables */
+.animated-link {
+    position: relative;
+    display: inline-block;
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.animated-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    background: #3b82f6; /* Couleur bleue */
+    transition: width 0.3s ease;
+}
+
+.animated-link:hover {
+    color: #3b82f6; /* Change de couleur */
+}
+
+.animated-link:hover::after {
+    width: 100%; /* Barre animée */
+}
