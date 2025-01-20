@@ -104,28 +104,35 @@
                     </p>
                 </div>
                 <!-- Formulaire -->
-                <form id="contact-form" action="https://formspree.io/f/mdkogppv" method="POST" class="space-y-6">
+                <form id="contact-form" action="https://formspree.io/f/mdkogppv" method="POST" class="space-y-6" onsubmit="return validateForm()">
+                    <!-- Honeypot (champ caché pour piéger les bots) -->
+                    <input type="text" name="honeypot" id="honeypot" class="hidden" autocomplete="off" tabindex="-1" aria-hidden="true">
+                
                     <div class="grid grid-cols-1 md:grid-cols-2 text-center gap-5 md:gap-12">
                         <div>
-                            <label for="name" class="block text-lg font-bold">Nom</label>
-                            <input type="text" id="userLastName" name="lastname" placeholder="Nom" 
-                                   class="w-full px-4 py-2 rounded-lg bg-zinc-800 text-center text-sm text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-600" required>
+                            <label for="userLastName" class="block text-lg font-bold">Nom</label>
+                            <input type="text" id="userLastName" name="lastname" placeholder="Nom"
+                                   class="w-full px-4 py-2 rounded-lg bg-zinc-800 text-center text-sm text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                                   required pattern="[a-zA-ZÀ-ÿ\s'-]+" maxlength="50">
                         </div>
                         <div>
-                            <label for="name" class="block text-lg font-bold">Prénom</label>
-                            <input type="text" id="userFirstName" name="firstname" placeholder="Prénom" 
-                                   class="w-full px-4 py-2 rounded-lg bg-zinc-800 text-center text-sm text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-600" required>
+                            <label for="userFirstName" class="block text-lg font-bold">Prénom</label>
+                            <input type="text" id="userFirstName" name="firstname" placeholder="Prénom"
+                                   class="w-full px-4 py-2 rounded-lg bg-zinc-800 text-center text-sm text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                                   required pattern="[a-zA-ZÀ-ÿ\s'-]+" maxlength="50">
                         </div>
                     </div>
                     <div class="text-center">
-                        <label for="service" class="block text-lg font-bold">Email</label>
-                        <input type="email" id="userEmail" name="email" placeholder="votre@mail.fr" 
-                                   class="w-full px-4 py-2 rounded-lg bg-zinc-800 text-center text-sm text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-600" required>
+                        <label for="userEmail" class="block text-lg font-bold">Email</label>
+                        <input type="email" id="userEmail" name="email" placeholder="votre@mail.fr"
+                               class="w-full px-4 py-2 rounded-lg bg-zinc-800 text-center text-sm text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                               required maxlength="100">
                     </div>
                     <div class="text-center">
                         <label for="service" class="block text-lg font-bold">Service</label>
                         <select id="service" name="service"
-                                class="w-full px-4 py-2 rounded-lg bg-zinc-800 text-center text-sm text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-600" required>
+                                class="w-full px-4 py-2 rounded-lg bg-zinc-800 text-center text-sm text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                                required>
                             <option value="">Qu'est-ce qui vous intéresse ?</option>
                             <option value="Aide sur Projet">Besoin d'aide pour un projet ponctuel</option>
                             <option value="Partenariat">À la recherche d'un partenariat à long terme</option>
@@ -135,13 +142,16 @@
                     </div>
                     <div class="text-center">
                         <label for="message" class="block text-lg font-bold">Message</label>
-                        <textarea id="message" name="message" placeholder="Votre message" 
-                                  class="w-full px-4 py-2 rounded-lg bg-zinc-800 text-center text-sm text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-600" required></textarea>
+                        <textarea id="message" name="message" placeholder="Votre message"
+                                  class="w-full px-4 py-2 rounded-lg bg-zinc-800 text-center text-sm text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                                  required maxlength="500" autocomplete="off"></textarea>
                     </div>
-                    <button type="submit" class="w-full py-3 px-6 rounded-lg bg-blue-600 text-white font-bold hover:bg-blue-500 transition">
+                
+                    <button type="submit" id="submit-button" class="w-full py-3 px-6 rounded-lg bg-blue-600 text-white font-bold hover:bg-blue-500 transition">
                         Envoyer
                     </button>
                 </form>
+                
             </div>
 
         </section>
@@ -197,13 +207,14 @@
     </div>
 </footer>
 
-    <script src="./src/javascript/hamburger.js"></script>
-
-
     <!-- Script Leaflet -->
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
     <!-- Script personnalisé pour initialiser la carte -->
     <script src="./src/javascript/map.js"></script>
+
     <script src="./src/javascript/scroll.js"></script>
+    <script src="./src/javascript/hamburger.js"></script>
+    <script src="./src/javascript/form-secu.js"></script>
+
 </body>
 </html>
