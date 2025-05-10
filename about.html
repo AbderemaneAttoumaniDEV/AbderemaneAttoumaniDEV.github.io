@@ -3,394 +3,251 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>À propos | Abdérémane Attoumani</title>
-    <link rel="stylesheet" href="./src/css/style.css">
+    <title>About | Abdérémane Attoumani</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="scripts/menu.js" defer></script>
 </head>
-<body class="bg-zinc-900 text-white flex flex-col min-h-screen">
+
+<body class="bg-zinc-900 text-white font-roboto select-none">
+    <div id="root"></div>
+    <script type="module" src="scripts/main.js"></script>
     
-    <!-- Bouton de retour en haut -->
-    <button id="back-to-top" class="fixed hidden bottom-5 right-5 bg-blue-800 text-white p-3 rounded-full shadow-lg hover:bg-zinc-700 focus:outline-none z-[9999]">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"></path>
-        </svg>
-    </button>
-
-    <!-- Barre de progression -->
-    <div class="fixed top-0 left-0 h-1 bg-blue-800 z-[10001]" id="progress-bar"></div>
-
-    <!-- HEADER --> 
-    <header class="bg-zinc-900 shadow-md sticky top-0 z-[10000]">
-        <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3 md:px-6 lg:px-8">
-            <div class="flex items-center space-x-3" id="header-text">
-                <img src="./src/assets/images/WhiteACircle.png" alt="Logo" class="w-12 h-12">
-                <div>
-                    <p class="font-semibold text-lg">Abdérémane Attoumani</p>
-                    <p class="text-sm text-gray-300">Web & UI Designer</p>
-                </div>
-            </div>
-
-            <!-- Menu hamburger --> 
-            <div class="relative">
-                <button id="menu-btn" class="focus:outline-none">
-                    <!-- Icône Hamburger -->
-                    <svg id="hamburger-icon" class="w-8 h-8 text-gray-300 hover:text-gray-600 transform hover:scale-[1.2] transition-all duration-300" fill="none" stroke="currentColor" stroke-width="2"
-                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7"></path>
+    <!-- En-tête -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-zinc-900 text-white pt-6">
+        
+        <!-- Barre de navigation -->    
+        <div class="relative p-2 max-w-5xl mx-4 md:mx-8 lg:mx-auto px-4 flex items-center justify-between relative border border-zinc-300 border-opacity-10 shadow-sm">
+              
+            <!-- Nom (toujours à gauche) -->
+            <a href="index.html" class="headerTitle md:px-4 md:text-3xl text-2xl font-semibold md:leading-[3rem] md:h-14 h-10">
+                ABDEREMANE ATTOUMANI
+            </a>
+            
+            <!-- Conteneur aligné à droite -->
+            <div class="flex items-center space-x-6 ml-auto">
+                <!-- Navigation -->
+                <nav class="hidden md:flex items-center">
+                    <ul>
+                        <li>
+                            <a href="about.html" class="paraFont opacity-95 hover:text-neutral-200 hover:scale-105 active:scale-90 transition-transform duration-150 ease-out inline-block">
+                                About me
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+    
+                <!-- Bouton Hamburger -->
+                <button id="hamburger-btn" class="text-zinc-600 hover:text-zinc-400 md:block">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
                 </button>
-
-                <!-- Icône Croix (Close) -->
-                <svg id="close-icon" class="hidden w-8 h-8 text-gray-300 hover:text-gray-600 transform hover:scale-[1.2] transition-all duration-300 absolute top-0 right-0 cursor-pointer z-30" fill="none" stroke="currentColor" stroke-width="2"
-                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-                </svg>
+    
+                <!-- Bouton Fermer -->
+                <button id="close-btn" class="fixed hidden text-zinc-600 absolute lg:right-6 md:right-8 text-zinc-500 hover:text-white z-50">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
             </div>
 
-            <!-- Menu -->
-            <nav id="menu" class="hidden fixed inset-0 bg-zinc-900 text-white flex flex-col items-center justify-center space-y-8">
-                <h2 class="text-xl font-bold">Menu</h2>
-                <a href="./index.html" class="animated-link text-3xl text-gray-300 transform hover:scale-[1.1] transition-all duration-300">Accueil</a>
-                <a href="./index.html#projects" class="animated-link text-3xl text-gray-300 transform hover:scale-[1.1] transition-all duration-300">Projets</a>
-                <a href="./about.html" class="animated-link text-3xl text-gray-300 transform hover:scale-[1.1] transition-all duration-300">À propos</a>
-                <a href="./contact.html" class="animated-link text-3xl text-gray-300 transform hover:scale-[1.1] transition-all duration-300">Contact</a>
-                <a href="https://www.linkedin.com/in/abd%C3%A9r%C3%A9mane-attoumani" class="animated-link text-3xl text-gray-300 transform hover:scale-[1.1] transition-all duration-300">Linkedin</a>
-                <a href="https://github.com/AbderemaneAttoumaniDEV" class="animated-link text-3xl text-gray-300 transform hover:scale-[1.1] transition-all duration-300">Github</a>
-                <div class="mt-10 absolute bottom-10 text-center text-zinc-600">
-                    <p>© 2024 Abdérémane Attoumani. Tous droits réservés.</p>
-                </div>
-            </nav>
         </div>
-    </header>
-
-
-    <!-- MAIN -->
-    <main class="max-w-7xl mx-auto px-4 py-8 space-y-12 flex-grow">
-        
-        <!-- Section: À propos -->
-        <section id="about" class="text-center space-y-8 scroll-element">
-            <h2 class="text-lg text-gray-300">Quelques mots sur moi</h2>
-            <h1 class="text-2xl md:text-4xl font-bold">Je suis Abdérémane Attoumani, un jeune développeur qui s'attache à raconter visuellement des histoires</h1>
-            <h2 class="text-lg text-gray-300">J’ai déjà eu l’occasion de me plonger dans plusieurs projets, à la fois académiques et en freelance, où j’ai pu explorer et affiner mes compétences. Toujours en quête d’apprentissage, je cherche sans cesse à élargir mon expertise et explorer de nouvelles technologies pour concevoir des expériences web captivantes et innovantes mais aussi pour relever des défis créatifs qui stimulent ma curiosité.</h2>
-        </section>
-          
-
-        <!-- Grille : Services et Outils -->
-        <section id="skills" class="grid grid-cols-1 md:grid-cols-2 text-center gap-8 scroll-element">
-
-
-        <div class="cell s-bottom">
-            <h2 class="text-white font-bold text-3xl lg:text-3xl mx-2 my-4 xl:my-8 flex justify-center">Services de conception</h2>
-            <hr class="my-4 h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-90 dark:via-neutral-400" />
-            <div class="slider-container wrapper">
-                <nav class="w-full">
-                    <ul class="grid grid-cols-1 lg:grid-cols-2 justify-center items-center space-y-2 gap-2 text-gray-300 mx-auto">
-                        <!-- Visual Studio Code -->
-                        <li class="flex items-center justify-center space-x-2">
-                            <img src="./src/assets/images/service-logo/artistic-direction.png" alt="Visual Studio Code" class="w-12 h-12 object-contain">
-                            <span>Direction artistique</span>
-                        </li>
-                        <!-- Adobe Photoshop -->
-                        <li class="flex items-center justify-center space-x-2">
-                            <img src="./src/assets/images/service-logo/webwebmobile.png" alt="Adobe Photoshop" class="w-16 h-16 object-contain">
-                            <span>Web & Mobile</span>
-                        </li>
-                        <!-- Adobe Premiere -->
-                        <li class="flex items-center justify-center space-x-2">
-                            <img src="./src/assets/images/service-logo/uxui.png" alt="Adobe Premiere Pro" class="w-14 h-14 object-contain">
-                            <span>UX & UI</span>
-                        </li>
-                        <!-- Adobe Premiere -->
-                        <li class="flex items-center justify-center space-x-2">
-                            <img src="./src/assets/images/service-logo/icono.png" alt="Adobe Premiere Pro" class="w-9 h-9 object-contain">
-                            <span>Iconographie</span>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-
-        <div class="cell s-bottom">
-            <h2 class="text-white font-bold text-3xl lg:text-3xl mx-2 my-4 xl:my-8 flex justify-center">Outils utilisés</h2>
-            <hr class="my-4 h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-90 dark:via-neutral-400" />
-            <div class="slider-container wrapper">
-                <nav class="w-full">
-                    <ul class="grid grid-cols-1 lg:grid-cols-2 justify-center items-center space-y-2 gap-2 text-gray-300 mx-auto">
-                        
-                        <!-- Visual Studio Code -->
-                        <li class="flex items-center justify-center space-x-2">
-                            <img src="./src/assets/images/tools-logo/vscode.png" alt="Visual Studio Code" class="w-10 h-10 object-contain">
-                            <span>Visual Studio Code</span>
-                        </li>
-
-                        <!-- Adobe Photoshop -->
-                        <li class="flex items-center justify-center space-x-2">
-                            <img src="./src/assets/images/tools-logo/photoshop.png" alt="Adobe Photoshop" class="w-10 h-10 object-contain">
-                            <span>Adobe Photoshop</span>
-                        </li>
-
-                        <!-- Adobe Premiere -->
-                        <li class="flex items-center justify-center space-x-2">
-                            <img src="./src/assets/images/tools-logo/premierepro.png" alt="Adobe Premiere Pro" class="w-10 h-10 object-contain">
-                            <span>Adobe Premiere Pro</span>
-                        </li>
-
-                        <!-- Figma -->
-                        <li class="flex items-center justify-center space-x-2">
-                            <img src="./src/assets/images/logo/figma.png" alt="Figma" class="w-10 h-10 object-contain">
-                            <span>Figma</span>
-                        </li>
-
-                        <!-- Capcut -->
-                        <li class="flex items-center justify-center space-x-2">
-                            <img src="./src/assets/images/tools-logo/capcut.png" alt="Capcut" class="w-10 h-10 object-contain">
-                            <span>Capcut</span>
-                        </li>
-
-                    </ul>
-                </nav>
-            </div>
-        </div>
+    
+        <!-- Menu Mobile -->
+        <div id="mobile-menu" class="paraFont fixed inset-0 bg-zinc-900 text-zinc-300 hidden flex flex-col justify-center items-center z-10">
+            <!-- Menu mobile -->
+            <ul class="text-center text-xl space-y-8">
+                <li><a href="index.html" class="hover:text-zinc-200 hover:font-bold transition">Home</a></li>
+                <li><a href="index.html#projects" class="hover:text-zinc-200 hover:font-bold transition">Projects</a></li>
+                <li><a href="about.html" class="hover:text-zinc-200 hover:font-bold transition">About me</a></li>
+                <li><a href="contact.html" class="hover:text-zinc-200 hover:font-bold transition">Contact</a></li>
+                <li><a href="https://github.com/AbderemaneAttoumaniDEV/" target="_blank" class="hover:text-zinc-200 hover:font-bold transition">GitHub</a></li>
+                <li><a href="https://www.linkedin.com/in/abd%C3%A9r%C3%A9mane-attoumani-4770ba301/" target="_blank" class="hover:text-zinc-200 transition">LinkedIn</a></li>
+            </ul>
             
-        </section>
-          
-        <!-- Compétences -->
-        <section id="skills" class="py-12 bg-zinc-800 text-white scroll-element">
-            <div class="max-w-6xl mx-auto px-4">
-                <h2 class="text-3xl font-bold text-center mb-8">Mes Compétences</h2>
+            <div id="menu-footer" class="fixed text-xs bottom-4">
+                <p>&copy; 2025 - Abdérémane Attoumani</p>
+            </div>
+        </div>
+        
+    </header>
+    
+    <main class="pt-20">
+        <!-- Section About -->
+        <section class="max-w-4xl mx-auto px-4 py-20">
+            <h1 class="mainTitle text-4xl md:text-5xl text-center mb-12">About me</h1>
+            
+            <div class="grid md:grid-cols-2 gap-8">
                 <div class="space-y-6">
-                    <!-- HTML5 -->
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-4">
-                            <img src="./src/assets/images/logo/html5.png" alt="HTML5" class="w-max h-14">
-                            <span class="text-gray-300">HTML5</span>
-                        </div>
-                        <div class="skill-bar w-2/4 md:w-3/4 bg-gray-700 h-2 rounded-full overflow-hidden">
-                            <div class="bg-teal-500 h-2 animate-progress" style="width: 95%;"></div>
-                        </div>
-                    </div>
-                    
-                    <!-- CSS3 -->
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-4">
-                            <img src="./src/assets/images/logo/css3.png" alt="CSS3" class="w-max h-14">
-                            <span class="text-gray-300">CSS3</span>
-                        </div>
-                        <div class="skill-bar w-2/4 md:w-3/4 bg-gray-700 h-2 rounded-full overflow-hidden">
-                            <div class="bg-teal-500 h-2 animate-progress" style="width: 93%;"></div>
-                        </div>
-                    </div>
+                    <h2 class="mainTitle text-2xl">My journey</h2>
+                    <p class="paraFont text-zinc-400">
+                        I'm a young passionate developer with expertise in UX/UI design and Front-end
+                    </p>
+                    <p class="paraFont text-zinc-400">
+                        My career path has allowed me to develop solid skills in creating intuitive and aesthetically pleasing user interfaces
+                    </p>
+                    <p class="paraFont text-zinc-400">
+                        I began my journey into web development several years ago, and since then,
+                        I've continued to learn and improve my skills in the latest web technologies and trends
+                    </p>
+                </div>
+                
+                <!-- Section Skills -->
+                <div class="space-y-6 ">
+                    <h2 class="mainTitle text-2xl">Skills</h2>
+                    <ul class="paraFont text-zinc-400 space-y-0.5">
 
-                    <!-- SASS -->
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-4">
-                            <img src="./src/assets/images/logo/sass.png" alt="Sass" class="w-max h-14">
-                            <span class="text-gray-300">Sass</span>
+                        <div class="grid grid-cols-2 pb-1.5 gap-2 max-w-md">
+                            <div class="bg-zinc-800 p-6 ">
+                                <li>Front-end
+                                    <li><img class="inline-block h-4" src="images/logo/html5.png" alt="Adobe Photoshop"> HTML5</li>
+                                    <li><img class="inline-block h-4" src="images/logo/css3.png" alt="CSS3"> CSS3</li>
+                                    <li><img class="inline-block h-4" src="images/logo/tailwind.png" alt="Adobe Photoshop"> TailwindCSS</li>
+                                    <li><img class="inline-block h-4" src="images/logo/bootstrap.png" alt="Bootstrap"> Bootstrap</li>
+                                    <li><img class="inline-block h-4" src="images/logo/javascript.png" alt="JavaScript"> JavaScript</li>
+                                    <li><img class="inline-block h-4" src="images/logo/react.png" alt="Adobe Photoshop"> React JS</li>
+                                    <li><img class="inline-block h-4" src="images/logo/vite.png" alt="Vite JS"> Vite JS</li>
+                                </li> 
+                            </div>
+                             
+                            <div class="bg-zinc-800 p-6">
+                                <li>Back-end
+                                    <li><img class="inline-block h-4" src="images/logo/php.png" alt="PHP"> PHP</li>
+                                    <li><img class="inline-block h-4" src="images/logo/javascript.png" alt="JavaScript"> JavaScript</li>
+                                    <li><img class="inline-block h-4" src="images/logo/nodejs.png" alt="Node JS"> Node JS</li>
+                                    <li><img class="inline-block h-4" src="images/logo/mysql.png" alt="MySQL"> MySQL</li>
+                                    <li><img class="inline-block h-4" src="images/logo/python.png" alt="Python"> Python</li>
+                                    <li><img class="inline-block h-4" src="images/logo/c-sharp.png" alt="C#"> C#</li>
+                                </li>
+                            </div>
+                            
                         </div>
-                        <div class="skill-bar w-2/4 md:w-3/4 bg-gray-700 h-2 rounded-full overflow-hidden">
-                            <div class="bg-teal-500 h-2 animate-progress" style="width: 70%;"></div>
+                        
+                        <div class="grid grid-cols-2 pb-1.5 gap-2 max-w-md">
+                            <div> </div>
+                            <div class="bg-zinc-800 p-6 gap-12 max-w-fit">
+                                <li>UX/UI Design<br>
+                                    <li><img class="inline-block h-4" src="images/logo/figma.png" alt="Figma"> Figma</li>
+                                    <li><img class="inline-block h-4" src="images/logo/photoshop.png" alt="Adobe Photoshop"> Adobe Photoshop</li>
+                                    <li><img class="inline-block h-4" src="images/logo/canva.png" alt="Canva"> Canva</li>
+                                    <li><img class="inline-block h-4" src="images/logo/iconify.png" alt="Iconify"> Iconify</li>
+                                    <FontAwesomeIcon icon="fa-brands fa-linkedin" />
+                                </li>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <!-- Tailwind -->
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-4">
-                            <img src="./src/assets/images/logo/tailwind.png" alt="Tailwind CSS" class="w-max h-14">
-                            <span class="text-gray-300">Tailwind</span>
-                        </div>
-                        <div class="skill-bar w-2/4 md:w-3/4 bg-gray-700 h-2 rounded-full overflow-hidden">
-                            <div class="bg-teal-500 h-2 animate-progress" style="width: 70%;"></div>
-                        </div>
-                    </div>
 
-                    <!-- Bootstrap -->
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-4">
-                            <img src="./src/assets/images/logo/bootstrap.png" alt="Bootstrap" class="w-max h-14">
-                            <span class="text-gray-300">Bootstrap</span>
+                        <div class="grid grid-cols-2 pb-1.5 gap-2 max-w-md">
+                            <div class="bg-zinc-800 p-6">
+                                <li>Versionning/DevOps<br>
+                                    <li><img class="inline-block h-4" src="images/logo/git.png" alt="Git"> Git</li>
+                                    <li><img class="inline-block h-4" src="images/logo/github.png" alt="GitHub"> GitHub</li>
+                                    <li><img class="inline-block h-4" src="images/logo/gactions.png" alt="GitHub Actions"> GitHub Actions</li>
+                                    <li><img class="inline-block h-4" src="images/logo/gpages.png" alt="GitHub Pages"> GitHub Pages</li>
+                                    <li><img class="inline-block h-4" src="images/logo/vercel.png" alt="Vercel"> Vercel</li>
+                                </li>
+                            </div>
+                             
+                            <div class="bg-zinc-800 p-6">
+                                <li>IDE<br>
+                                    <li><img class="inline-block h-4" src="images/logo/vscode.png" alt="Visual Studio Code"> Visual Studio Code</li>
+                                    <li><img class="inline-block h-4" src="images/logo/flutter.png" alt="Flutter"> Flutter</li>
+                                </li>
+                            </div>
+                            
                         </div>
-                        <div class="skill-bar w-2/4 md:w-3/4 bg-gray-700 h-2 rounded-full overflow-hidden">
-                            <div class="bg-teal-500 h-2 animate-progress" style="width: 68%;"></div>
-                        </div>
-                    </div>
 
-                    <!-- Python -->
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-4">
-                            <img src="./src/assets/images/logo/python.png" alt="Python" class="w-max h-14">
-                            <span class="text-gray-300">Python</span>
+                        <div class="grid grid-cols-2 pb-1.5 gap-2 max-w-md">
+                            <div class="bg-zinc-800 p-6 max-w-md">
+                                <li>Additional Tools<br>
+                                    <li><img class="inline-block h-4" src="images/logo/solidworks.png" alt="SolidWorks"> SolidWorks</li>
+                                    <li><img class="inline-block h-4" src="images/logo/sketchup.png" alt="SketchUp"> SketchUp</li>
+                                    <li><img class="inline-block h-4" src="images/logo/autocad.png" alt="AutoCAD"> AutoCAD</li>
+                                    <li><img class="inline-block h-4" src="images/logo/arduino.png" alt="Arduino IDE"> Arduino IDE</li>
+                                    <li><img class="inline-block h-4" src="images/logo/tinkercad.png" alt="Tinkercad Circuits"> Tinkercad Circuits</li>
+                                    <li><img class="inline-block h-4" src="images/logo/microsoft365.png" alt="Microsoft 365"> Microsoft 365</li>
+                                    <li><img class="inline-block h-4" src="images/logo/powerpoint.png" alt="PowerPoint "> PowerPoint </li>
+                                    <li><img class="inline-block h-4" src="images/logo/capcut.png" alt="Capcut"> Capcut</li>
+                                    <li><img class="inline-block h-4" src="images/logo/trello.png" alt="Trello"> Trello</li>
+                                </li>
+                            </div>
+                            <div></div>
                         </div>
-                        <div class="skill-bar w-2/4 md:w-3/4 bg-gray-700 h-2 rounded-full overflow-hidden">
-                            <div class="bg-teal-500 h-2 animate-progress" style="width: 45%;"></div>
-                        </div>
-                    </div>
-                    
-                    <!-- C# -->
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-4">
-                            <img src="./src/assets/images/logo/c-sharp.png" alt="C#" class="w-max h-14">
-                            <span class="text-gray-300">C#</span>
-                        </div>
-                        <div class="skill-bar w-2/4 md:w-3/4 bg-gray-700 h-2 rounded-full overflow-hidden">
-                            <div class="bg-teal-500 h-2 animate-progress" style="width: 25%;"></div>
-                        </div>
-                    </div>
-
-                    <!-- JavaScript -->
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-4">
-                            <img src="./src/assets/images/logo/javascript.png" alt="JavaScript" class="w-max h-14">
-                            <span class="text-gray-300">JavaScript</span>
-                        </div>
-                        <div class="skill-bar w-2/4 md:w-3/4 bg-gray-700 h-2 rounded-full overflow-hidden">
-                            <div class="bg-teal-500 h-2 animate-progress" style="width: 45%;"></div>
-                        </div>
-                    </div>
-
-                    <!-- Webpack -->
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-4">
-                            <img src="./src/assets/images/logo/webpack.png" alt="Webpack" class="w-max h-14">
-                            <span class="text-gray-300">Webpack</span>
-                        </div>
-                        <div class="skill-bar w-2/4 md:w-3/4 bg-gray-700 h-2 rounded-full overflow-hidden">
-                            <div class="bg-teal-500 h-2 animate-progress" style="width: 75%;"></div>
-                        </div>
-                    </div>
-
-                    <!-- Node js -->
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-4">
-                            <img src="./src/assets/images/logo/nodejs.png" alt="Node js" class="w-max h-14">
-                            <span class="text-gray-300">Node.js</span>
-                        </div>
-                        <div class="skill-bar w-2/4 md:w-3/4 bg-gray-700 h-2 rounded-full overflow-hidden">
-                            <div class="bg-teal-500 h-2 animate-progress" style="width: 35%;"></div>
-                        </div>
-                    </div>
-
-                    <!-- React -->
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-4">
-                            <img src="./src/assets/images/logo/react.png" alt="React" class="w-max h-14">
-                            <span class="text-gray-300">React</span>
-                        </div>
-                        <div class="skill-bar w-2/4 md:w-3/4 bg-gray-700 h-2 rounded-full overflow-hidden">
-                            <div class="bg-teal-500 h-2 animate-progress" style="width: 28%;"></div>
-                        </div>
-                    </div>
-
-                    <!-- MySQL -->
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-4">
-                            <img src="./src/assets/images/logo/mysql.png" alt="MySQL" class="w-max h-14">
-                            <span class="text-gray-300">MySQL</span>
-                        </div>
-                        <div class="skill-bar w-2/4 md:w-3/4 bg-gray-700 h-2 rounded-full overflow-hidden">
-                            <div class="bg-teal-500 h-2 animate-progress" style="width: 50%;"></div>
-                        </div>
-                    </div>
-
-                    <!-- PHP -->
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-4">
-                            <img src="./src/assets/images/logo/php.png" alt="PHP" class="w-max h-14">
-                            <span class="text-gray-300">PHP</span>
-                        </div>
-                        <div class="skill-bar w-2/4 md:w-3/4 bg-gray-700 h-2 rounded-full overflow-hidden">
-                            <div class="bg-teal-500 h-2 animate-progress" style="width: 50%;"></div>
-                        </div>
-                    </div>
-
-                    <!-- Git -->
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-4">
-                            <img src="./src/assets/images/logo/git.png" alt="Git" class="w-max h-14">
-                            <span class="text-gray-300">Git</span>
-                        </div>
-                        <div class="skill-bar w-2/4 md:w-3/4 bg-gray-700 h-2 rounded-full overflow-hidden">
-                            <div class="bg-teal-500 h-2 animate-progress" style="width: 55%;"></div>
-                        </div>
-                    </div>
-
-                    <!-- Github -->
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-4">
-                            <img src="./src/assets/images/logo/github.png" alt="Github" class="w-max h-14">
-                            <span class="text-gray-300">Github</span>
-                        </div>
-                        <div class="skill-bar w-2/4 md:w-3/4 bg-gray-700 h-2 rounded-full overflow-hidden">
-                            <div class="bg-teal-500 h-2 animate-progress" style="width: 90%;"></div>
-                        </div>
-                    </div>
-
+                    </ul>
                 </div>
             </div>
         </section>
 
-        <!-- Préfooter -->
-        <section id="contact" class="text-white py-8 scroll-element">
-            <div class="max-w-3xl mx-auto text-center space-y-4">
-                <h2 class="text-2xl font-bold">Besoin d'un développeur ?</h2>
-                <p class="text-sm text-gray-300">Je suis toujours à la recherche de nouveaux projets et collaborations. Contactez-moi dès maintenant !</p>
-                <a href="./contact.html"
-                   class="bg-zinc-800 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-zinc-700 transition inline-block transform hover:scale-[1.05] transition-all duration-300">
-                    Travaillons ensemble
+        <!-- Séparateur -->
+        <hr class="border-t border-zinc-600 my-6">
+
+        <!-- Footer -->
+        <section class="bg-gradient-to-b from-zinc-900 to-neutral-900">
+            <div class="sm:w-fit sm:pt-20 pt-16 sm:pb-6 pb-8 text-center place-self-center px-6 grid grid-cols-2 md:grid-cols-4 gap-12">
+                <div>
+                    <a href="index.html" class="paraFont opacity-95 text-sm hover:text-neutral-200 hover:scale-105 active:scale-90 transition-transform duration-150 ease-out inline-block">
+                        Home
+                    </a>
+                    <hr class="border-t border-zinc-600 w-fill my-6">
+                </div>
+
+                <div>
+                    <a href="index.html#projects" class="paraFont opacity-95 hover:text-neutral-200 hover:scale-105 active:scale-90 transition-transform duration-150 ease-out inline-block">
+                        Projects
+                    </a>
+                    <hr class="border-t border-zinc-600 w-40 my-6">
+                </div>
+
+                <div>
+                    <a href="about.html" class="paraFont opacity-95 hover:text-neutral-200 hover:scale-105 active:scale-90 transition-transform duration-150 ease-out inline-block">
+                        About me
+                    </a>
+                    <hr class="border-t border-zinc-600 w-40 my-6">
+                </div>
+
+                <div>
+                    <a href="contact.html" class="paraFont opacity-95 hover:text-neutral-200 hover:scale-105 active:scale-90 transition-transform duration-150 ease-out inline-block">
+                        Contact
+                    </a>
+                    <hr class="border-t border-zinc-600 w-40 my-6">
+                </div>
+            </div>
+
+            <!-- Icônes Réseaux Sociaux -->
+            <div class="flex items-center justify-center place-self-center sm:pb-16 pb-12 xl:w-64 lg:w-1/6 md:w-1/4 w-3/5 justify-between">
+                <!-- GitHub -->
+                <a href="https://github.com/AbderemaneAttoumaniDEV/" target="_blank"
+                    class="w-10 h-10 flex items-center justify-center border border-zinc-400/50 rounded-full transition hover:border-zinc-100">
+                    <svg class="w-6 h-6 text-zinc-400 hover:text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.547-1.385-1.335-1.754-1.335-1.754-1.09-.744.082-.729.082-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.835 2.805 1.304 3.49.997.108-.775.42-1.305.76-1.605-2.665-.303-5.466-1.334-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.175 0 0 1.005-.322 3.3 1.23.955-.265 1.98-.398 3-.403 1.02.005 2.045.138 3 .403 2.28-1.552 3.285-1.23 3.285-1.23.645 1.652.24 2.872.12 3.175.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.435.375.825 1.108.825 2.235 0 1.62-.015 2.925-.015 3.32 0 .315.21.69.825.57C20.565 22.092 24 17.595 24 12c0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </a>
+        
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/abd%C3%A9r%C3%A9mane-attoumani-4770ba301/" target="_blank"
+                    class="w-10 h-10 flex items-center justify-center border border-zinc-400/50 rounded-full transition hover:border-zinc-100">
+                    <svg class="w-6 h-6 text-zinc-400 hover:text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.28c-.97 0-1.75-.78-1.75-1.75s.78-1.75 1.75-1.75 1.75.78 1.75 1.75-.78 1.75-1.75 1.75zm13.5 11.28h-3v-5.5c0-1.38-1.12-2.5-2.5-2.5s-2.5 1.12-2.5 2.5v5.5h-3v-10h3v1.28c.86-1.28 2.36-2.28 4-2.28 2.76 0 5 2.24 5 5v6z"/>
+                    </svg>
                 </a>
             </div>
         </section>
-        <hr class="my-4 h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-90 dark:via-neutral-400" />
     </main>
 
-    <!-- FOOTER -->
-    <footer class="bg-zinc-900 text-white py-10">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-            <!-- Informations de contact -->
-            <section class="scroll-element">
-                <h3 class="text-lg font-bold mb-4">Informations de Contact</h3>
-                <p class="text-sm text-gray-300">N'hésitez pas à m'envoyer un message, je réponds généralement rapidement !</p>
-                <div class="mt-4 space-y-2">
-                    <p><a href="mailto:attoumani.abderemane@gmail.com" target="_blank" class="animated-link text-sm text-gray-400 ">attoumani.abderemane@gmail.com</a></p>
-                    <p><a href="tel:+33767118948" target="_blank" class="animated-link text-sm text-gray-400 ">+33 7 67 11 89 48</a></p>
-                </div>
-            </section>
+    <!-- Séparateur -->
+    <hr class="border-t w-3/4 place-self-center border-zinc-600">
 
-            <!-- Projets récents -->
-            <section class="scroll-element">
-                <h3 class="text-lg font-bold mb-4">Projets récents</h3>
-                <ul class="text-sm space-y-4">
-                    <li><a href="https://abderemaneattoumanidev.github.io/ToDoList-JavaScript/" target="_blank" class="animated-link text-gray-400">To Do List</a></li>
-                    <li><a href="https://abderemaneattoumanidev.github.io/WeatherApp/" target="_blank" class="animated-link text-gray-400">Weather App</a></li>
-                    <li><a href="https://abderemaneattoumanidev.github.io/PasswordGenerator/" target="_blank" class="animated-link text-gray-400">Générateur de Mot de Passe</a></li>
-                    <li><a href="https://abderemaneattoumanidev.github.io/Local-Authentication-Form/" target="_blank" class="animated-link text-gray-400">Formulaire d'Authentification Locale</a></li>
-                </ul>
-            </section>
-
-            <!-- Disponibilité -->
-            <section class="scroll-element">
-                <h3 class="text-lg font-bold mb-4">Disponibilité actuelle</h3>
-                <p class="text-sm text-gray-300">
-                    En recherche active d'un contrat d'apprentissage pour une rentrée décalée en début 2025 ou fin 2025
-                </p>
-            </section>
-            <!-- Informations de contact -->
-            <section class="scroll-element">
-                <h3 class="text-lg font-bold mb-4">Suivez moi sur</h3>
-                <div class="mt-4 space-y-2">
-                    <p><a href="https://github.com/AbderemaneAttoumaniDEV" target="_blank" class="animated-link text-sm text-gray-400">GitHub</a></p>
-                    <p><a href="https://www.linkedin.com/in/abd%C3%A9r%C3%A9mane-attoumani/" target="_blank" class="animated-link text-sm text-gray-400">Linkedin</a></p>
-                </div>
-            </section>
-        </div>
-
-        <div class="mt-10 text-center text-zinc-600">
-            <p>© 2024 Abdérémane Attoumani. Tous droits réservés.</p>
-        </div>
+    <!-- Footer -->
+    <footer class="paraFont md:flex md:rows-1 bg-gradient-to-b from-neutral-900/90 to-neutral-900 text-white py-6 text-center">
+        <div class="sm:flex sm:rows-1 sm:w-3/4 sm:mx-auto sm:justify-between sm:pt-6">
+            <p class="sm:pt-0 text-xs pt-6" >&copy; 2025 - Abdérémane Attoumani</p>
+            <div class="md:flex md:gap-6 sm:pt-0 pt-2 sm:text-sm text-xs">
+                <a href="https://github.com/AbderemaneAttoumaniDEV/" target="_blank" class="hover:text-gray-200 hover:text-blue-200 hover:scale-105 active:scale-90 transition-transform duration-150 ease-out inline-block">GitHub</a> 
+                <a href="https://www.linkedin.com/in/abd%C3%A9r%C3%A9mane-attoumani-4770ba301/" target="_blank" class="hover:text-gray-200 hover:text-blue-200 hover:scale-105 active:scale-90 transition-transform duration-150 ease-out inline-block mb-6">LinkedIn</a>
+            </div>
+        </div>    
     </footer>
-
-    <script src="./src/javascript/hamburger.js"></script>
-    <script src="./src/javascript/scroll.js"></script>
-    <script src="./src/javascript/skills-animation.js"></script>
 
 </body>
 </html>

@@ -3,218 +3,346 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Abdérémane Attoumani - Web & UI Designer</title>
-    <link rel="stylesheet" href="./src/css/style.css">
+    <title>Contact | Abdérémane Attoumani</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="scripts/menu.js" defer></script>
 </head>
-<body class="bg-zinc-900 text-white flex flex-col min-h-screen">
 
-    <!-- Bouton de retour en haut -->
-    <button id="back-to-top" class="fixed hidden bottom-5 right-5 bg-blue-800 text-white p-3 rounded-full shadow-lg hover:bg-zinc-700 focus:outline-none z-[9999]">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"></path>
-        </svg>
-    </button>
+<body class="bg-zinc-900 text-white font-roboto select-none">
+    <div id="root"></div>
+    <script type="module" src="scripts/main.js"></script>
 
-    <!-- Barre de progression -->
-    <div class="fixed top-0 left-0 h-1 bg-blue-800 z-[10001]" id="progress-bar"></div>
-
-    <!-- HEADER --> 
-    <header class="bg-zinc-900 shadow-md sticky top-0 z-[10000]">
-        <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3 md:px-6 lg:px-8">
-            <div class="flex items-center space-x-3" id="header-text">
-                <img src="./src/assets/images/WhiteACircle.png" alt="Logo" class="w-12 h-12">
-                <div>
-                    <p class="font-semibold text-lg">Abdérémane Attoumani</p>
-                    <p class="text-sm text-gray-300">Web & UI Designer</p>
-                </div>
-            </div>
-
-            <!-- Menu hamburger --> 
-            <div class="relative">
-                <button id="menu-btn" class="focus:outline-none">
-                    <!-- Icône Hamburger -->
-                    <svg id="hamburger-icon" class="w-8 h-8 text-gray-300 hover:text-gray-600 transform hover:scale-[1.2] transition-all duration-300" fill="none" stroke="currentColor" stroke-width="2"
-                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7"></path>
+    <!-- En-tête -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-zinc-900 text-white pt-6">
+        
+        <!-- Barre de navigation -->    
+        <div class="relative p-2 max-w-5xl mx-4 md:mx-8 lg:mx-auto px-4 flex items-center justify-between relative border border-zinc-300 border-opacity-10 shadow-sm">
+              
+            <!-- Nom  -->
+            <a href="index.html" class="headerTitle md:px-4 md:text-3xl text-2xl font-semibold md:leading-[3rem] md:h-14 h-10">
+                ABDEREMANE ATTOUMANI
+            </a>
+            
+            <!-- Conteneur aligné à droite -->
+            <div class="flex items-center space-x-6 ml-auto">
+                <!-- Navigation -->
+                <nav class="hidden md:flex items-center">
+                    <ul>
+                        <li>
+                            <a href="contact.html" class="paraFont opacity-95 hover:text-neutral-200 hover:scale-105 active:scale-90 transition-transform duration-150 ease-out inline-block">
+                                Contact
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+    
+                <!-- Bouton Hamburger -->
+                <button id="hamburger-btn" class="text-zinc-600 hover:text-zinc-400 md:block">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
                 </button>
-
-                <!-- Icône Croix (Close) -->
-                <svg id="close-icon" class="hidden w-8 h-8 text-gray-300 hover:text-gray-600 transform hover:scale-[1.2] transition-all duration-300 absolute top-0 right-0 cursor-pointer z-30" fill="none" stroke="currentColor" stroke-width="2"
-                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-                </svg>
+    
+                <!-- Bouton Fermer -->
+                <button id="close-btn" class="fixed hidden text-zinc-600 absolute lg:right-6 md:right-8 text-zinc-500 hover:text-white z-50">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
             </div>
 
-            <!-- Menu -->
-            <nav id="menu" class="hidden fixed inset-0 bg-zinc-900 text-white flex flex-col items-center justify-center space-y-8">
-                <h2 class="text-xl font-bold">Menu</h2>
-                <a href="./index.html" class="animated-link text-3xl text-gray-300 transform hover:scale-[1.1] transition-all duration-300">Accueil</a>
-                <a href="./index.html#projects" class="animated-link text-3xl text-gray-300 transform hover:scale-[1.1] transition-all duration-300">Projets</a>
-                <a href="./about.html" class="animated-link text-3xl text-gray-300 transform hover:scale-[1.1] transition-all duration-300">À propos</a>
-                <a href="./contact.html" class="animated-link text-3xl text-gray-300 transform hover:scale-[1.1] transition-all duration-300">Contact</a>
-                <a href="https://www.linkedin.com/in/abd%C3%A9r%C3%A9mane-attoumani" class="animated-link text-3xl text-gray-300 transform hover:scale-[1.1] transition-all duration-300">Linkedin</a>
-                <a href="https://github.com/AbderemaneAttoumaniDEV" class="animated-link text-3xl text-gray-300 transform hover:scale-[1.1] transition-all duration-300">Github</a>
-                <div class="mt-10 absolute bottom-10 text-center text-zinc-600">
-                    <p>© 2024 Abdérémane Attoumani. Tous droits réservés.</p>
-                </div>
-            </nav>
         </div>
+    
+        <!-- Menu Mobile -->
+        <div id="mobile-menu" class="paraFont fixed inset-0 bg-zinc-900 text-zinc-300 hidden flex flex-col justify-center items-center z-10">
+            <!-- Menu mobile -->
+            <ul class="text-center text-xl space-y-8">
+                <li><a href="index.html" class="hover:text-zinc-200 hover:font-bold transition">Home</a></li>
+                <li><a href="index.html#projects" class="hover:text-zinc-200 hover:font-bold transition">Projects</a></li>
+                <li><a href="about.html" class="hover:text-zinc-200 hover:font-bold transition">About me</a></li>
+                <li><a href="contact.html" class="hover:text-zinc-200 hover:font-bold transition">Contact</a></li>
+                <li><a href="https://github.com/AbderemaneAttoumaniDEV/" target="_blank" class="hover:text-zinc-200 hover:font-bold transition">GitHub</a></li>
+                <li><a href="https://www.linkedin.com/in/abd%C3%A9r%C3%A9mane-attoumani-4770ba301/" target="_blank" class="hover:text-zinc-200 transition">LinkedIn</a></li>
+            </ul>
+            
+            <div id="menu-footer" class="fixed text-xs bottom-4">
+                <p>&copy; 2025 - Abdérémane Attoumani</p>
+            </div>
+        </div>
+        
     </header>
+    
+    <main class="pt-20">
+        <!-- Section Contact -->
+        <section class="max-w-4xl mx-auto px-4 py-20">
+            <h1 class="mainTitle text-4xl md:text-5xl text-center mb-12">Contact me</h1>
 
+            <!-- Carte Leaflet -->
+            <div id="map" class="mb-12 w-full h-96 rounded-lg shadow-md z-0"></div>
+       
+            <div class="grid md:grid-cols-2 gap-8">
 
-
-
-
-    <!-- MAIN -->
-    <main class="max-w-7xl mx-auto px-4 py-8 space-y-12 md:my-24 flex-grow">
-        <!-- Carte Leaflet -->
-        <section id="map-section" class="space-y-6 relative">
-            <div class="map-container relative">
-                <!-- Texte positionné au-dessus de la carte -->
-                <div class="absolute top-4 left-14 z-10">
-                    <h2 class="text-4xl md:text-6xl font-bold text-white">Travaillons</h2>
-                </div>
-                <div class="absolute bottom-4 left-14 z-10">
-                    <h2 class="text-4xl md:text-6xl font-bold text-gray-300">Ensemble</h2>
-                </div>
-                <!-- Carte Leaflet -->
-                <div id="map" class="w-full h-96 rounded-lg shadow-md z-0"></div>
-            </div>
-        </section>
-        
-
-        <!-- Formulaire de Contact -->
-        <section id="contact-form-section" class="space-y-12">
-            <h2 class="text-center text-3xl font-bold">Contactez-moi</h2>
-            <p class="text-center text-gray-300 max-w-2xl mx-auto">
-                Vous avez un projet ? Écrivez-moi si vous souhaitez travailler ensemble sur quelque chose d'excitant. 
-                Grand ou petit. Mobile ou Web.
-            </p>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
-                <!-- Adresse -->
-                <div class="md:text-left text-center space-y-6">
-                    <h3 class="text-lg font-bold">Adresse</h3>
-                    <p class="text-sm">
-                        Nantes<br>
-                        Paris<br>
-                        Meaux<br>
+                <div class="space-y-11">
+                    <h2 class="mainTitle text-2xl">Information</h2>
+                    <p class="paraFont text-zinc-400">
+                        Please feel free to contact me to discuss your projects or with any questions
+                        <br>I am available for collaborations and professional opportunities
                     </p>
+                    <div class="space-y-4">
+                        <p class="paraFont text-zinc-400">
+                            <span class="font-semibold">Email :</span> attoumani.abderemane@gmail.com
+                        </p>
+                        <p class="paraFont text-zinc-400">
+                            <span class="font-semibold">Phone :</span> +33 7 67 11 89 48
+                        </p>
+                        
+                        <p class="paraFont text-zinc-400">
+                            <span class="font-semibold">Location :</span> Nantes - Paris
+                        </p>
+                    </div>
                 </div>
-                <!-- Formulaire -->
-                <form id="contact-form" action="https://formspree.io/f/mdkogppv" method="POST" class="space-y-6" onsubmit="return validateForm()">
-                    <!-- Honeypot (champ caché pour piéger les bots) -->
-                    <input type="text" name="honeypot" id="honeypot" class="hidden" autocomplete="off" tabindex="-1" aria-hidden="true">
                 
-                    <div class="grid grid-cols-1 md:grid-cols-2 text-center gap-5 md:gap-12">
-                        <div>
-                            <label for="userLastName" class="block text-lg font-bold">Nom</label>
-                            <input type="text" id="userLastName" name="lastname" placeholder="Nom"
-                                   class="w-full px-4 py-2 rounded-lg bg-zinc-800 text-center text-sm text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-600"
-                                   required pattern="[a-zA-ZÀ-ÿ\s'-]+" maxlength="50">
+                <div class="space-y-6">
+                    <h2 class="mainTitle text-2xl">Form</h2>
+                    <form 
+                        action="https://formspree.io/f/xvgargbr"
+                        method="POST" 
+                        class="space-y-4">
+                        <!-- Name -->
+                            <div class="form__group field">
+                                <input 
+                                    type="text" 
+                                    id="name" 
+                                    name="name"
+                                    class="form__field" 
+                                    placeholder="Name" 
+                                    required
+                                    minlength="2"
+                                    maxlength="30"
+                                    autocomplete="name"
+                                    aria-required="true">
+                                <label for="name" class="form__label">Name</label>
+                            </div>
+
+                        <!-- Email -->
+                        <div class="form__email">
+                            <input 
+                                type="email"
+                                id="email"
+                                name="email"
+                                class="form__field" 
+                                placeholder="email" 
+                                required
+                                minlength="6"
+                                maxlength="254"
+                                autocomplete="email"
+                                aria-required="true"
+                                >
+                            <label for="email" class="form__label">Email</label>
                         </div>
-                        <div>
-                            <label for="userFirstName" class="block text-lg font-bold">Prénom</label>
-                            <input type="text" id="userFirstName" name="firstname" placeholder="Prénom"
-                                   class="w-full px-4 py-2 rounded-lg bg-zinc-800 text-center text-sm text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-600"
-                                   required pattern="[a-zA-ZÀ-ÿ\s'-]+" maxlength="50">
+
+                        <!-- Message -->
+                        <div class="form__message field">
+                            <textarea
+                                id="message" 
+                                name="message"
+                                rows="3"
+                                minlength="10"
+                                maxlength="1000"
+                                class="form__field mb-4"
+                                placeholder="Message"
+                                aria-required="true"
+                                required></textarea>
+                            <label for="message" class="form__label">Message</label>
                         </div>
-                    </div>
-                    <div class="text-center">
-                        <label for="userEmail" class="block text-lg font-bold">Email</label>
-                        <input type="email" id="userEmail" name="email" placeholder="votre@mail.fr"
-                               class="w-full px-4 py-2 rounded-lg bg-zinc-800 text-center text-sm text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-600"
-                               required maxlength="100">
-                    </div>
-                    <div class="text-center">
-                        <label for="service" class="block text-lg font-bold">Service</label>
-                        <select id="service" name="service"
-                                class="w-full px-4 py-2 rounded-lg bg-zinc-800 text-center text-sm text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-600"
-                                required>
-                            <option value="">Qu'est-ce qui vous intéresse ?</option>
-                            <option value="Aide sur Projet">Besoin d'aide pour un projet ponctuel</option>
-                            <option value="Partenariat">À la recherche d'un partenariat à long terme</option>
-                            <option value="Offre d'Emploi">Vous souhaitez m'embaucher en alternance/temps plein</option>
-                            <option value="Salutations distinguées">Je voulais juste te dire bonjour</option>
-                        </select>
-                    </div>
-                    <div class="text-center">
-                        <label for="message" class="block text-lg font-bold">Message</label>
-                        <textarea id="message" name="message" placeholder="Votre message"
-                                  class="w-full px-4 py-2 rounded-lg bg-zinc-800 text-center text-sm text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-600"
-                                  required maxlength="500" autocomplete="off"></textarea>
-                    </div>
-                
-                    <button type="submit" id="submit-button" class="w-full py-3 px-6 rounded-lg bg-blue-600 text-white font-bold hover:bg-blue-500 transition">
-                        Envoyer
-                    </button>
-                </form>
-                
+
+                        <div style="display:none;">
+                            <label for="website">Website</label>
+                            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+                          </div>
+
+                        <!-- Button -->
+                        <button 
+                            type="submit"
+                            name="submit"
+                            class="relative border border-zinc-400 hover:border-zinc-600 duration-500 group cursor-pointer text-zinc-50  overflow-hidden h-14 w-full rounded-md bg-zinc-800 p-2 flex justify-center items-center font-extrabold">
+                            <div class="absolute z-10 w-48 h-48 rounded-full group-hover:scale-150 transition-all  duration-500 ease-in-out bg-zinc-900 delay-150 group-hover:delay-75"></div>
+                            <div class="absolute z-10 w-40 h-40 rounded-full group-hover:scale-150 transition-all  duration-500 ease-in-out bg-zinc-800 delay-150 group-hover:delay-100"></div>
+                            <div class="absolute z-10 w-32 h-32 rounded-full group-hover:scale-150 transition-all  duration-500 ease-in-out bg-zinc-700 delay-150 group-hover:delay-150"></div>
+                            <div class="absolute z-10 w-24 h-24 rounded-full group-hover:scale-150 transition-all  duration-500 ease-in-out bg-zinc-600 delay-150 group-hover:delay-200"></div>
+                            <div class="absolute z-10 w-16 h-16 rounded-full group-hover:scale-150 transition-all  duration-500 ease-in-out bg-zinc-500 delay-150 group-hover:delay-300"></div>
+                            <p class="z-10">Send</p>
+                        </button>
+
+                        <!-- Contac Form Base
+                        
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="firstname" class="block text-zinc-400 mb-2">Firstame</label>
+                                <input 
+                                    type="text" 
+                                    id="firstname" 
+                                    name="firstname"
+                                    required
+                                    minlength="2"
+                                    maxlength="15"
+                                    autocomplete="firstname"
+                                    class="w-full px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-md focus:outline-none focus:border-zinc-500"
+                                    aria-required="true">
+                            </div>
+                            <div>
+                                <label for="name" class="block text-zinc-400 mb-2">Name</label>
+                                <input 
+                                    type="text" 
+                                    id="name" 
+                                    name="name" 
+                                    required 
+                                    minlength="2"
+                                    maxlength="15"
+                                    autocomplete="name"
+                                    class="w-full px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-md focus:outline-none focus:border-zinc-500"
+                                    aria-required="true">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="email" class="block text-zinc-400 mb-2">Email</label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                minlength="6"
+                                maxlength="254"
+                                required 
+                                autocomplete="email"
+                                class="w-full px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-md focus:outline-none focus:border-zinc-500"
+                                aria-required="true">
+                        </div>
+
+                        <div>
+                            <label for="subject" class="block text-zinc-400 mb-2">Subject</label>
+                            <input 
+                                type="text" 
+                                id="subject" 
+                                name="subject" 
+                                required 
+                                minlength="2"
+                                maxlength="40"
+                                autocomplete="subject"
+                                class="w-full px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-md focus:outline-none focus:border-zinc-500"
+                                aria-required="true">
+                        </div>
+
+                        <div>
+                            <label for="message" class="block text-zinc-400 mb-2">Message</label>
+                            <textarea 
+                                id="message" 
+                                name="message" 
+                                rows="4" 
+                                required 
+                                minlength="10"
+                                maxlength="1000"
+                                class="w-full px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-md focus:outline-none focus:border-zinc-500"
+                                aria-required="true"></textarea>
+                        </div>
+
+                        <div style="display:none;">
+                            <label for="website">Website</label>
+                            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+                          </div>
+                          
+                        <button 
+                            type="submit" 
+                            name="submit"
+                            class="w-full bg-white bg-opacity-70 text-zinc-900 py-2 px-4 rounded-md hover:bg-opacity-90 transition">
+                            Send
+                        </button>
+                    </form>
+                    -->
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Séparateur -->
+        <hr class="border-t border-zinc-600 my-6">
+
+        <!-- Footer -->
+        <section class="bg-gradient-to-b from-zinc-900 to-neutral-900">
+
+            <div class="sm:w-fit sm:pt-20 pt-16 sm:pb-6 pb-8 text-center place-self-center px-6 grid grid-cols-2 md:grid-cols-4 gap-12">
+                <div>
+                    <a href="index.html" class="paraFont opacity-95 text-sm hover:text-neutral-200 hover:scale-105 active:scale-90 transition-transform duration-150 ease-out inline-block">
+                        Home
+                    </a>
+                    <hr class="border-t border-zinc-600 w-fill my-6">
+                </div>
+
+                <div>
+                    <a href="index.html#projects" class="paraFont opacity-95 hover:text-neutral-200 hover:scale-105 active:scale-90 transition-transform duration-150 ease-out inline-block">
+                        Projects
+                    </a>
+                    <hr class="border-t border-zinc-600 w-40 my-6">
+                </div>
+
+                <div>
+                    <a href="about.html" class="paraFont opacity-95 hover:text-neutral-200 hover:scale-105 active:scale-90 transition-transform duration-150 ease-out inline-block">
+                        About me
+                    </a>
+                    <hr class="border-t border-zinc-600 w-40 my-6">
+                </div>
+
+                <div>
+                    <a href="contact.html" class="paraFont opacity-95 hover:text-neutral-200 hover:scale-105 active:scale-90 transition-transform duration-150 ease-out inline-block">
+                        Contact
+                    </a>
+                    <hr class="border-t border-zinc-600 w-40 my-6">
+                </div>
             </div>
 
-        </section>
+            <!-- Icônes Réseaux Sociaux -->
+            <div class="flex items-center justify-center place-self-center sm:pb-16 pb-12 xl:w-64 lg:w-1/6 md:w-1/4 w-3/5 justify-between">
+                <!-- GitHub -->
+                <a href="https://github.com/AbderemaneAttoumaniDEV/" target="_blank"
+                    class="w-10 h-10 flex items-center justify-center border border-zinc-400/50 rounded-full transition hover:border-zinc-100">
+                    <svg class="w-6 h-6 text-zinc-400 hover:text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.547-1.385-1.335-1.754-1.335-1.754-1.09-.744.082-.729.082-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.835 2.805 1.304 3.49.997.108-.775.42-1.305.76-1.605-2.665-.303-5.466-1.334-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.175 0 0 1.005-.322 3.3 1.23.955-.265 1.98-.398 3-.403 1.02.005 2.045.138 3 .403 2.28-1.552 3.285-1.23 3.285-1.23.645 1.652.24 2.872.12 3.175.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.435.375.825 1.108.825 2.235 0 1.62-.015 2.925-.015 3.32 0 .315.21.69.825.57C20.565 22.092 24 17.595 24 12c0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </a>
         
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/abd%C3%A9r%C3%A9mane-attoumani-4770ba301/" target="_blank"
+                    class="w-10 h-10 flex items-center justify-center border border-zinc-400/50 rounded-full transition hover:border-zinc-100">
+                    <svg class="w-6 h-6 text-zinc-400 hover:text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.28c-.97 0-1.75-.78-1.75-1.75s.78-1.75 1.75-1.75 1.75.78 1.75 1.75-.78 1.75-1.75 1.75zm13.5 11.28h-3v-5.5c0-1.38-1.12-2.5-2.5-2.5s-2.5 1.12-2.5 2.5v5.5h-3v-10h3v1.28c.86-1.28 2.36-2.28 4-2.28 2.76 0 5 2.24 5 5v6z"/>
+                    </svg>
+                </a>
+            </div>
+        </section>
 
     </main>
-    <hr class="my-4 h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-90 dark:via-neutral-400" />
-    
 
-<!-- FOOTER -->
-<footer class="bg-zinc-900 text-white py-10">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-        <!-- Informations de contact -->
-        <section class="scroll-element">
-            <h3 class="text-lg font-bold mb-4">Informations de Contact</h3>
-            <p class="text-sm text-gray-300">N'hésitez pas à m'envoyer un message, je réponds généralement rapidement !</p>
-            <div class="mt-4 space-y-2">
-                <p><a href="mailto:attoumani.abderemane@gmail.com" target="_blank" class="animated-link text-sm text-gray-400 ">attoumani.abderemane@gmail.com</a></p>
-                <p><a href="tel:+33767118948" target="_blank" class="animated-link text-sm text-gray-400 ">+33 7 67 11 89 48</a></p>
+    <!-- Séparateur -->
+    <hr class="border-t w-3/4 place-self-center border-zinc-600">
+
+    <!-- Footer -->
+    <footer class="paraFont md:flex md:rows-1 bg-gradient-to-b from-neutral-900/90 to-neutral-900 text-white py-6 text-center">
+        <div class="sm:flex sm:rows-1 sm:w-3/4 sm:mx-auto sm:justify-between sm:pt-6">
+            <p class="sm:pt-0 text-xs pt-6" >&copy; 2025 - Abdérémane Attoumani</p>
+            <div class="md:flex md:gap-6 sm:pt-0 pt-2 sm:text-sm text-xs">
+                <a href="https://github.com/AbderemaneAttoumaniDEV/" target="_blank" class="hover:text-gray-200 hover:text-blue-200 hover:scale-105 active:scale-90 transition-transform duration-150 ease-out inline-block">GitHub</a> 
+                <a href="https://www.linkedin.com/in/abd%C3%A9r%C3%A9mane-attoumani-4770ba301/" target="_blank" class="hover:text-gray-200 hover:text-blue-200 hover:scale-105 active:scale-90 transition-transform duration-150 ease-out inline-block mb-6">LinkedIn</a>
             </div>
-        </section>
-
-        <!-- Projets récents -->
-        <section class="scroll-element">
-            <h3 class="text-lg font-bold mb-4">Projets récents</h3>
-            <ul class="text-sm space-y-4">
-                <li><a href="https://abderemaneattoumanidev.github.io/ToDoList-JavaScript/" target="_blank" class="animated-link text-gray-400">To Do List</a></li>
-                <li><a href="https://abderemaneattoumanidev.github.io/WeatherApp/" target="_blank" class="animated-link text-gray-400">Weather App</a></li>
-                <li><a href="https://abderemaneattoumanidev.github.io/PasswordGenerator/" target="_blank" class="animated-link text-gray-400">Générateur de Mot de Passe</a></li>
-                <li><a href="https://abderemaneattoumanidev.github.io/Local-Authentication-Form/" target="_blank" class="animated-link text-gray-400">Formulaire d'Authentification Locale</a></li>
-            </ul>
-        </section>
-
-        <!-- Disponibilité -->
-        <section class="scroll-element">
-            <h3 class="text-lg font-bold mb-4">Disponibilité actuelle</h3>
-            <p class="text-sm text-gray-300">
-                En recherche active d'un contrat d'apprentissage pour une rentrée décalée en début 2025 ou fin 2025
-            </p>
-        </section>
-        <!-- Informations de contact -->
-        <section class="scroll-element">
-            <h3 class="text-lg font-bold mb-4">Suivez moi sur</h3>
-            <div class="mt-4 space-y-2">
-                <p><a href="https://github.com/AbderemaneAttoumaniDEV" target="_blank" class="animated-link text-sm text-gray-400">GitHub</a></p>
-                <p><a href="https://www.linkedin.com/in/abd%C3%A9r%C3%A9mane-attoumani/" target="_blank" class="animated-link text-sm text-gray-400">Linkedin</a></p>
-            </div>
-        </section>
-    </div>
-
-    <div class="mt-10 text-center text-zinc-600">
-        <p>© 2024 Abdérémane Attoumani. Tous droits réservés.</p>
-    </div>
-</footer>
+        </div>    
+    </footer>
 
     <!-- Script Leaflet -->
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
     <!-- Script personnalisé pour initialiser la carte -->
-    <script src="./src/javascript/map.js"></script>
-
-    <script src="./src/javascript/scroll.js"></script>
-    <script src="./src/javascript/hamburger.js"></script>
-    <script src="./src/javascript/form-secu.js"></script>
-
+    <script src="scripts/map.js"></script>
 </body>
 </html>

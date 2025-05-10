@@ -3,214 +3,210 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Abdérémane Attoumani - Web & UI Designer</title>
-    <link rel="stylesheet" href="./src/css/style.css">
+    <title>Portfolio | Abdérémane Attoumani</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/styles/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="scripts/menu.js" defer></script> <!-- Importation du fichier JS externe -->
 </head>
 
-<body class="bg-zinc-900 text-white flex flex-col min-h-screen">
-
-    <!-- Bouton de retour en haut -->
-    <button id="back-to-top" class="fixed hidden bottom-5 right-5 bg-blue-800 text-white p-3 rounded-full shadow-lg hover:bg-zinc-700 focus:outline-none z-[9999]">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"></path>
-        </svg>
-    </button>
-
-    <!-- Barre de progression -->
-    <div class="fixed top-0 left-0 h-1 bg-blue-800 z-[10001]" id="progress-bar"></div>
-
-    <!-- HEADER --> 
-    <header class="bg-zinc-900 shadow-md sticky top-0 z-[10000]">
-        <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3 md:px-6 lg:px-8">
-            <div class="flex items-center space-x-3" id="header-text">
-                <img src="./src/assets/images/WhiteACircle.png" alt="Logo" class="w-12 h-12">
-                <div>
-                    <p class="font-semibold text-lg">Abdérémane Attoumani</p>
-                    <p class="text-sm text-gray-300">Web & UI Designer</p>
-                </div>
-            </div>
-
-            <!-- Menu hamburger --> 
-            <div class="relative">
-                <button id="menu-btn" class="focus:outline-none">
-                    <!-- Icône Hamburger -->
-                    <svg id="hamburger-icon" class="w-8 h-8 text-gray-300 hover:text-gray-600 transform hover:scale-[1.2] transition-all duration-300" fill="none" stroke="currentColor" stroke-width="2"
-                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7"></path>
+<body class="bg-zinc-900 text-white font-roboto select-none">
+    <div id="root"></div>
+    <script type="module" src="scripts/main.js"></script>
+    
+    <!-- En-tête -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-zinc-900 text-white pt-6">
+        
+        <!-- Barre de navigation -->    
+        <div class="relative p-2 max-w-5xl mx-4 md:mx-8 lg:mx-auto px-4 flex items-center justify-between relative border border-zinc-300 border-opacity-10 shadow-sm">
+              
+            <!-- Nom (toujours à gauche) -->
+            <a href="index.html" class="headerTitle md:px-4 md:text-3xl text-2xl font-semibold md:leading-[3rem] md:h-14 h-10">
+                ABDEREMANE ATTOUMANI
+            </a>
+            
+            <!-- Conteneur aligné à droite -->
+            <div class="flex items-center space-x-6 ml-auto">
+                <!-- Navigation -->
+                <nav class="hidden md:flex items-center">
+                    <ul>
+                        <li>
+                            <a href="index.html" class="paraFont opacity-95 hover:text-neutral-200 hover:scale-105 active:scale-90 transition-transform duration-150 ease-out inline-block">
+                                Home
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+    
+                <!-- Bouton Hamburger -->
+                <button id="hamburger-btn" class="text-zinc-600 hover:text-zinc-400 md:block">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
                 </button>
-
-                <!-- Icône Croix (Close) -->
-                <svg id="close-icon" class="hidden w-8 h-8 text-gray-300 hover:text-gray-600 transform hover:scale-[1.2] transition-all duration-300 absolute top-0 right-0 cursor-pointer z-30" fill="none" stroke="currentColor" stroke-width="2"
-                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-                </svg>
+    
+                <!-- Bouton Fermer -->
+                <button id="close-btn" class="fixed hidden text-zinc-600 absolute lg:right-6 md:right-8 text-zinc-500 hover:text-white z-50">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
             </div>
 
-            <!-- Menu -->
-            <nav id="menu" class="hidden fixed inset-0 bg-zinc-900 text-white flex flex-col items-center justify-center space-y-8">
-                <h2 class="text-xl font-bold">Menu</h2>
-                <a href="./index.html" class="animated-link text-3xl text-gray-300 transform hover:scale-[1.1] transition-all duration-300">Accueil</a>
-                <a href="./index.html#projects" class="animated-link text-3xl text-gray-300 transform hover:scale-[1.1] transition-all duration-300">Projets</a>
-                <a href="./about.html" class="animated-link text-3xl text-gray-300 transform hover:scale-[1.1] transition-all duration-300">À propos</a>
-                <a href="./contact.html" class="animated-link text-3xl text-gray-300 transform hover:scale-[1.1] transition-all duration-300">Contact</a>
-                <a href="https://www.linkedin.com/in/abd%C3%A9r%C3%A9mane-attoumani" class="animated-link text-3xl text-gray-300 transform hover:scale-[1.1] transition-all duration-300">Linkedin</a>
-                <a href="https://github.com/AbderemaneAttoumaniDEV" class="animated-link text-3xl text-gray-300 transform hover:scale-[1.1] transition-all duration-300">Github</a>
-                <div class="mt-10 absolute bottom-10 text-center text-zinc-600">
-                    <p>© 2024 Abdérémane Attoumani. Tous droits réservés.</p>
-                </div>
-            </nav>
         </div>
+    
+        <!-- Menu Mobile -->
+        <div id="mobile-menu" class="paraFont fixed inset-0 bg-zinc-900 text-zinc-300 hidden flex flex-col justify-center items-center z-10">
+            <!-- Menu mobile -->
+            <ul class="text-center text-xl space-y-8">
+                <li><a href="index.html" class="hover:text-zinc-200 hover:font-bold transition">Home</a></li>
+                <li><a href="index.html#projects" class="hover:text-zinc-200 hover:font-bold transition">Projects</a></li>
+                <li><a href="about.html" class="hover:text-zinc-200 hover:font-bold transition">About me</a></li>
+                <li><a href="contact.html" class="hover:text-zinc-200 hover:font-bold transition">Contact</a></li>
+                <li><a href="https://github.com/AbderemaneAttoumaniDEV/" target="_blank" class="hover:text-zinc-200 hover:font-bold transition">GitHub</a></li>
+                <li><a href="https://www.linkedin.com/in/abd%C3%A9r%C3%A9mane-attoumani-4770ba301/" target="_blank" class="hover:text-zinc-200 transition">LinkedIn</a></li>
+            </ul>
+            
+            <div id="menu-footer" class="fixed text-xs bottom-4">
+                <p>&copy; 2025 - Abdérémane Attoumani</p>
+            </div>
+        </div>
+        
     </header>
+    
+    <main class="pt-20">
 
-    <!-- MAIN -->
-    <main class="max-w-7xl mx-auto px-4 py-8 space-y-12 flex-grow">
-
-        <!-- Présentation -->
-        <section class="text-center space-y-4 scroll-element">
-            <h1 class="uppercase tracking-[0.2rem] text-2xl text-sm md:text-lg">Abdérémane ATTOUMANI</h1>
-            <h2 class="text-3xl md:text-4xl text-gray-300">Concepteur de Sites Web et d'Interfaces Utilisateur</h2>
-            <p class="text-gray-300 max-w-3xl mx-auto">
-                Étudiant en développement web, j'ai travaillé sur divers projets académiques et en freelance,
-                ce qui m’a permis de renforcer mes compétences en création de sites et applications web 
-            </p>
+        <!-- Carte de Profil -->
+        <div class="relative pt-6 w-72 sm:w-80 md:w-96 mx-auto overflow-hidden bg-zinc-900 rounded-t-[50%] shadow-2xl mt-6">
+            
+            <!-- Image avec ombre -->
+            <div class="relative">
+                <img src="images/myself/face.jpg" alt="Abdérémane Attoumani" 
+                    class="w-full object-cover h-[400px] md:h-[500px] rounded-t-[50%]">
+                    <div class="absolute inset-0 bg-gray-900 opacity-30 rounded-t-[50%]"></div>
+                <div class="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-black to-transparent"></div>
+            </div>
+        
+            <!-- Texte Défilant
+            <div class="absolute bottom-28 left-1/2 transform -translate-x-1/2 w-full overflow-hidden">
+                <div class="mainTitle whitespace-nowrap text-2xl sm:text-3xl text-zinc-300 tracking-wide animate-marquee">
+                    &nbsp;- Abdérémane Attoumani - Abdérémane Attoumani - Abdérémane Attoumani -
+                </div>
+            </div> -->
+        
+            <!-- Icônes Réseaux Sociaux -->
+            <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-4">
+                <!-- GitHub -->
+                <a href="https://github.com/AbderemaneAttoumaniDEV/" target="_blank"
+                    class="w-10 h-10 flex items-center justify-center border border-zinc-400/50 rounded-full transition hover:border-zinc-100">
+                    <svg class="w-6 h-6 text-zinc-400 hover:text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.547-1.385-1.335-1.754-1.335-1.754-1.09-.744.082-.729.082-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.835 2.805 1.304 3.49.997.108-.775.42-1.305.76-1.605-2.665-.303-5.466-1.334-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.175 0 0 1.005-.322 3.3 1.23.955-.265 1.98-.398 3-.403 1.02.005 2.045.138 3 .403 2.28-1.552 3.285-1.23 3.285-1.23.645 1.652.24 2.872.12 3.175.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.435.375.825 1.108.825 2.235 0 1.62-.015 2.925-.015 3.32 0 .315.21.69.825.57C20.565 22.092 24 17.595 24 12c0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </a>
+        
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/abd%C3%A9r%C3%A9mane-attoumani-4770ba301/" target="_blank"
+                    class="w-10 h-10 flex items-center justify-center border border-zinc-400/50 rounded-full transition hover:border-zinc-100">
+                    <svg class="w-6 h-6 text-zinc-400 hover:text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.28c-.97 0-1.75-.78-1.75-1.75s.78-1.75 1.75-1.75 1.75.78 1.75 1.75-.78 1.75-1.75 1.75zm13.5 11.28h-3v-5.5c0-1.38-1.12-2.5-2.5-2.5s-2.5 1.12-2.5 2.5v5.5h-3v-10h3v1.28c.86-1.28 2.36-2.28 4-2.28 2.76 0 5 2.24 5 5v6z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Presentation -->
+        <section class="text-center py-20 bg-zinc-900 text-white">
+            <h1 class="mainTitle md:text-5xl text-4xl text-zinc-200 leading-tight mb-4">UX/UI Designer, Full-Stack Developer</h1>
+            <p class="paraFont text-zinc-400 md:text-xl sm:text-sm text-xs mb-6">Young and passionate developer, ready to turn ideas into reality. Discover my projects and skills.</p>
+            <a href="about.html" class="linkFont bg-white bg-opacity-70 font-semibold text-zinc-900 py-3 px-6 md:text-base text-sm shadow-lg hover:bg-gray-100 inline-block">Learn more</a>
         </section>
+        
+        <!-- Séparateur -->
+        <hr class="border-t border-zinc-600">
 
         <!-- Projets -->
-        <section id="projects" class="space-y-10 scroll-element">
-          <h2 class="text-white font-bold text-3xl lg:text-3xl mx-2 my-4 xl:my-8 flex justify-center">Mes Réalisations</h2>
+        <section id="projects" class="sm:py-16 bg-zinc-900"></section>
+  
+        <!-- Séparateur -->
+        <hr class="border-t border-zinc-600 my-6">
 
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-x-16 gap-y-10">
-            <!-- L'Atelier d'Ayssa -->
-            <a href="https://github.com/AbderemaneAttoumaniDEV/Snake-Game" target="_blank" class="relative group block">
-                <img src="./src/assets/images/project/snakegame.png" alt="Snake Game" class="w-full h-96 object-cover rounded-lg shadow-md">
-                <div class="absolute inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                    <p class="text-white font-bold">Snake Game</p>
-                </div>
-            </a>
-            <!-- L'Atelier d'Ayssa -->
-            <a href="https://abderemaneattoumanidev.github.io/Atelier-Ayssa/" target="_blank" class="relative group block">
-                <img src="./src/assets/images/project/atelier-dassya.png" alt="L'Atelier d'Ayssa" class="w-full h-96 object-cover rounded-lg shadow-md">
-                <div class="absolute inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                    <p class="text-white font-bold">L'Atelier d'Ayssa</p>
-                </div>
-            </a>
-
-            <!-- Quiz Interactif -->
-            <a href="https://abderemaneattoumanidev.github.io/Interactive-Quiz/" target="_blank" class="relative group block">
-                <img src="./src/assets/images/project/quizz.png" alt="Quiz Interactif" class="w-full h-96 object-cover rounded-lg shadow-md">
-                <div class="absolute inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                    <p class="text-white font-bold">Quiz Interactif</p>
-                </div>
-            </a>
-
-              <!-- To Do List -->
-              <a href="https://abderemaneattoumanidev.github.io/ToDoList-JavaScript/" target="_blank" class="relative group block">
-                <img src="./src/assets/images/project/todolist.png" alt="To Do List" class="w-full h-96 object-cover rounded-lg shadow-md">
-                <div class="absolute inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                    <p class="text-white font-bold">To Do List</p>
-                </div>
-            </a>
-
-              <!-- Weather App -->
-              <a href="https://abderemaneattoumanidev.github.io/WeatherApp/" target="_blank" class="relative group block">
-                  <img src="./src/assets/images/project/weatherapp.png" alt="Weather App" class="w-full h-96 object-cover rounded-lg shadow-md">
-                  <div class="absolute inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                      <p class="text-white font-bold">Weather App</p>
-                  </div>
-              </a>
-              
-              <!-- Générateur de Mot de Passe -->
-              <a href="https://abderemaneattoumanidev.github.io/PasswordGenerator/" target="_blank" class="relative group block">
-                  <img src="./src/assets/images/project/passwordgenerator.png" alt="Générateur de Mot de Passe" class="w-full h-96 object-cover rounded-lg shadow-md">
-                  <div class="absolute inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                      <p class="text-white font-bold">Générateur de Mot de Passe</p>
-                  </div>
-              </a>
-              
-              <!-- Formulaire d'Authentification Locale -->
-              <a href="https://abderemaneattoumanidev.github.io/Local-Authentication-Form/" target="_blank" class="relative group block">
-                  <img src="./src/assets/images/project/local-authentication-form.png" alt="Formulaire d'Authentification Locale" class="w-full h-96 object-cover rounded-lg shadow-md">
-                  <div class="absolute inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                      <p class="text-white font-bold">Formulaire d'Authentification Locale</p>
-                  </div>
-              </a>
-              
-              
-          </div>
-          <!-- Lien vers GitHub -->
-          <div class="text-center mt-2">
-            <a href="https://github.com/AbderemaneAttoumaniDEV" target="_blank" class="animated-link text-gray-300 text-2xl text-sm md:text-lg transition duration-300">
-                Vous en voulez plus ? Visitez mon GitHub
-            </a>
+        <!-- Contact -->
+        <div class="text-center pt-14 bg-zinc-900 text-white">
+            <a href="contact.html" class="linkFont bg-white bg-opacity-70 font-semibold text-zinc-900 py-3 px-6 md:text-base text-sm shadow-lg hover:bg-zinc-300 inline-block">Let's work together !</a>
         </div>
-      </section>
-      
 
-        <!-- Préfooter -->
-        <section id="contact" class="text-white py-8 scroll-element">
-            <div class="max-w-3xl mx-auto text-center space-y-4">
-                <h2 class="text-2xl font-bold">Besoin d'un développeur ?</h2>
-                <p class="text-sm text-gray-300">Je suis toujours à la recherche de nouveaux projets et collaborations. Contactez-moi dès maintenant !</p>
-                <a href="./contact.html"
-                   class="bg-zinc-800 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-zinc-700 transition inline-block transform hover:scale-[1.05] transition-all duration-300">
-                    Travaillons ensemble
+        <section class="bg-gradient-to-b from-zinc-900 to-neutral-900">
+            <div class="sm:w-fit sm:pt-20 pt-16 sm:pb-6 pb-8 text-center place-self-center px-6 grid grid-cols-2 md:grid-cols-4 gap-12">
+
+                <div>
+                    <a href="index.html" class="paraFont opacity-95 text-sm hover:text-neutral-200 hover:scale-105 active:scale-90 transition-transform duration-150 ease-out inline-block">
+                        Home
+                    </a>
+                    <!-- Séparateur -->
+                    <hr class="border-t border-zinc-600 w-fill my-6">
+                </div>
+
+                <div>
+                    <a href="#projects" class="paraFont opacity-95 hover:text-neutral-200 hover:scale-105 active:scale-90 transition-transform duration-150 ease-out inline-block">
+                        Projects
+                    </a>
+                    <!-- Séparateur -->
+                    <hr class="border-t border-zinc-600 w-40 my-6">
+                </div>
+
+                <div>
+                    <a href="about.html" class="paraFont opacity-95 hover:text-neutral-200 hover:scale-105 active:scale-90 transition-transform duration-150 ease-out inline-block">
+                        About me
+                    </a>
+                    <!-- Séparateur -->
+                    <hr class="border-t border-zinc-600 w-40 my-6">
+                </div>
+
+                <div>
+                    <a href="contact.html" class="paraFont opacity-95 hover:text-neutral-200 hover:scale-105 active:scale-90 transition-transform duration-150 ease-out inline-block">
+                        Contact
+                    </a>
+                    <!-- Séparateur -->
+                    <hr class="border-t border-zinc-600 w-40 my-6">
+                </div>
+                
+            </div>
+
+            <!-- Icônes Réseaux Sociaux -->
+            <div class="flex items-center justify-center place-self-center sm:pb-16 pb-12 xl:w-64 lg:w-1/6 md:w-1/4 w-3/5 justify-between">
+                <!-- GitHub -->
+                <a href="https://github.com/AbderemaneAttoumaniDEV/" target="_blank"
+                    class="w-10 h-10 flex items-center justify-center border border-zinc-400/50 rounded-full transition hover:border-zinc-100">
+                    <svg class="w-6 h-6 text-zinc-400 hover:text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.547-1.385-1.335-1.754-1.335-1.754-1.09-.744.082-.729.082-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.835 2.805 1.304 3.49.997.108-.775.42-1.305.76-1.605-2.665-.303-5.466-1.334-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.175 0 0 1.005-.322 3.3 1.23.955-.265 1.98-.398 3-.403 1.02.005 2.045.138 3 .403 2.28-1.552 3.285-1.23 3.285-1.23.645 1.652.24 2.872.12 3.175.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.435.375.825 1.108.825 2.235 0 1.62-.015 2.925-.015 3.32 0 .315.21.69.825.57C20.565 22.092 24 17.595 24 12c0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </a>
+        
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/abd%C3%A9r%C3%A9mane-attoumani-4770ba301/" target="_blank"
+                    class="w-10 h-10 flex items-center justify-center border border-zinc-400/50 rounded-full transition hover:border-zinc-100">
+                    <svg class="w-6 h-6 text-zinc-400 hover:text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.28c-.97 0-1.75-.78-1.75-1.75s.78-1.75 1.75-1.75 1.75.78 1.75 1.75-.78 1.75-1.75 1.75zm13.5 11.28h-3v-5.5c0-1.38-1.12-2.5-2.5-2.5s-2.5 1.12-2.5 2.5v5.5h-3v-10h3v1.28c.86-1.28 2.36-2.28 4-2.28 2.76 0 5 2.24 5 5v6z"/>
+                    </svg>
                 </a>
             </div>
         </section>
-        <hr class="my-4 h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-90 dark:via-neutral-400" />
+        
     </main>
 
-    <!-- FOOTER -->
-    <footer class="bg-zinc-900 text-white py-10">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-            <!-- Informations de contact -->
-            <section class="scroll-element">
-                <h3 class="text-lg font-bold mb-4">Informations de Contact</h3>
-                <p class="text-sm text-gray-300">N'hésitez pas à m'envoyer un message, je réponds généralement rapidement !</p>
-                <div class="mt-4 space-y-2">
-                    <p><a href="mailto:attoumani.abderemane@gmail.com" target="_blank" class="animated-link text-sm text-gray-400 ">attoumani.abderemane@gmail.com</a></p>
-                    <p><a href="tel:+33767118948" target="_blank" class="animated-link text-sm text-gray-400 ">+33 7 67 11 89 48</a></p>
-                </div>
-            </section>
+    <!-- Séparateur -->
+    <hr class="border-t w-3/4 place-self-center border-zinc-600">
 
-            <!-- Projets récents -->
-            <section class="scroll-element">
-                <h3 class="text-lg font-bold mb-4">Projets récents</h3>
-                <ul class="text-sm space-y-4">
-                    <li><a href="https://abderemaneattoumanidev.github.io/ToDoList-JavaScript/" target="_blank" class="animated-link text-gray-400">To Do List</a></li>
-                    <li><a href="https://abderemaneattoumanidev.github.io/WeatherApp/" target="_blank" class="animated-link text-gray-400">Weather App</a></li>
-                    <li><a href="https://abderemaneattoumanidev.github.io/PasswordGenerator/" target="_blank" class="animated-link text-gray-400">Générateur de Mot de Passe</a></li>
-                    <li><a href="https://abderemaneattoumanidev.github.io/Local-Authentication-Form/" target="_blank" class="animated-link text-gray-400">Formulaire d'Authentification Locale</a></li>
-                </ul>
-            </section>
-
-            <!-- Disponibilité -->
-            <section class="scroll-element">
-                <h3 class="text-lg font-bold mb-4">Disponibilité actuelle</h3>
-                <p class="text-sm text-gray-300">
-                    En recherche active d'un contrat d'apprentissage pour une rentrée décalée en début 2025 ou fin 2025
-                </p>
-            </section>
-            <!-- Informations de contact -->
-            <section class="scroll-element">
-                <h3 class="text-lg font-bold mb-4">Suivez moi sur</h3>
-                <div class="mt-4 space-y-2">
-                    <p><a href="https://github.com/AbderemaneAttoumaniDEV" target="_blank" class="animated-link text-sm text-gray-400">GitHub</a></p>
-                    <p><a href="https://www.linkedin.com/in/abd%C3%A9r%C3%A9mane-attoumani/" target="_blank" class="animated-link text-sm text-gray-400">Linkedin</a></p>
-                </div>
-            </section>
-        </div>
-
-        <div class="mt-10 text-center text-zinc-600">
-            <p>© 2024 Abdérémane Attoumani. Tous droits réservés.</p>
-        </div>
+    <!-- Footer -->
+    <footer class="paraFont md:flex md:rows-1 bg-gradient-to-b from-neutral-900/90 to-neutral-900 text-white py-6 text-center">
+        <div class="sm:flex sm:rows-1 sm:w-3/4 sm:mx-auto sm:justify-between sm:pt-6">
+            <p class="sm:pt-0 text-xs pt-6" >&copy; 2025 - Abdérémane Attoumani</p>
+            <div class="md:flex md:gap-6 sm:pt-0 pt-2 sm:text-sm text-xs">
+                <a href="https://github.com/AbderemaneAttoumaniDEV/" target="_blank" class="hover:text-gray-200 hover:text-blue-200 hover:scale-105 active:scale-90 transition-transform duration-150 ease-out inline-block">GitHub</a> 
+                <a href="https://www.linkedin.com/in/abd%C3%A9r%C3%A9mane-attoumani-4770ba301/" target="_blank" class="hover:text-gray-200 hover:text-blue-200 hover:scale-105 active:scale-90 transition-transform duration-150 ease-out inline-block mb-6">LinkedIn</a>
+            </div>
+        </div>    
     </footer>
-
-    <script src="./src/javascript/main.js" type="module"></script>
-    <script src="./src/javascript/hamburger.js"></script>
-    <script src="./src/javascript/scroll.js"></script>
 
 </body>
 </html>
